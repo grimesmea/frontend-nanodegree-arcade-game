@@ -23,14 +23,14 @@ var Enemy = function() {
   this.sprite = 'images/enemy-bug';
 };
 
-Enemy.prototype = Object.creat(Entity.prototype);
+Enemy.prototype = Object.create(Entity.prototype);
 
 var Player = function() {
   Entity.call(this);
 
 };
 
-Player.prototype = Object.creat(Entity.prototype);
+Player.prototype = Object.create(Entity.prototype);
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
