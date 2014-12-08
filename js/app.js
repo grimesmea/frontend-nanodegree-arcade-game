@@ -24,6 +24,7 @@ var Enemy = function() {
 };
 
 Enemy.prototype = Object.create(Entity.prototype);
+Enemy.prototype.constructor = Enemy;
 
 var Player = function() {
   Entity.call(this);
@@ -31,6 +32,7 @@ var Player = function() {
 };
 
 Player.prototype = Object.create(Entity.prototype);
+Player.prototype.constructor = Player;
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
