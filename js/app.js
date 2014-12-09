@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Entity = function() {};
+var Entity = function(x, y) {};
 
 // Update the entity's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -17,8 +17,8 @@ Entity.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Enemy = function() {
-  Entity.call(this);
+var Enemy = function(x, y) {
+  Entity.call(this, x, y);
 
   this.sprite = 'images/enemy-bug';
 };
@@ -26,8 +26,8 @@ var Enemy = function() {
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
 
-var Player = function() {
-  Entity.call(this);
+var Player = function(x, y) {
+  Entity.call(this, x, y);
 
 };
 
@@ -37,10 +37,10 @@ Player.prototype.constructor = Player;
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player();
+var player = new Player(100, 100);
 var enemies = [];
 
-enemies.push(new Enemy());
+enemies.push(new Enemy(50, 50));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
