@@ -29,6 +29,7 @@ Enemy.prototype.constructor = Enemy;
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
+  this.sprite = 'images/char-princess-girl';
 };
 
 Player.prototype = Object.create(Entity.prototype);
