@@ -1,5 +1,8 @@
 // Enemies our player must avoid
-var Entity = function(x, y) {};
+var Entity = function(x, y) {
+  this.x = x;
+  this.y = y;
+};
 
 // Update the entity's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -20,7 +23,7 @@ Entity.prototype.render = function() {
 var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
-  this.sprite = 'images/enemy-bug';
+  this.sprite = 'images/enemy-bug.png';
 };
 
 Enemy.prototype = Object.create(Entity.prototype);
@@ -29,7 +32,7 @@ Enemy.prototype.constructor = Enemy;
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
-  this.sprite = 'images/char-princess-girl';
+  this.sprite = 'images/char-princess-girl.png';
 };
 
 Player.prototype = Object.create(Entity.prototype);
