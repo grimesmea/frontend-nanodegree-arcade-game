@@ -41,7 +41,7 @@ Player.prototype.constructor = Player;
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(100, 100);
+var player = new Player(200, 400);
 var enemies = [];
 
 enemies.push(new Enemy(50, 50));
