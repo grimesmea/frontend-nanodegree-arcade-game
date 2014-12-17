@@ -24,10 +24,18 @@ var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
   this.sprite = 'images/enemy-bug.png';
+
+  var maxSpeed = 5;
+  var minSpeed = 2;
+  var speed = this.getSpeed();
 };
 
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
+
+Enemy.prototype.getSpeed = function(minSpeed, maxSpeed) {
+  return Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed;
+};
 
 var Player = function(x, y) {
   Entity.call(this, x, y);
