@@ -38,6 +38,24 @@ var Player = function(x, y) {
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 
+Player.prototype.handleInput = function(key) {
+  if (key === 'left') {
+    this.x -= 100;
+  }
+
+  if (key === 'up') {
+    this.y -= 100;
+  }
+
+  if (key === 'right') {
+    this.x += 100;
+  }
+
+  if (key === 'down') {
+    this.y += 100;
+  }
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
