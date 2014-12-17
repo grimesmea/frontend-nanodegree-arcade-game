@@ -92,6 +92,7 @@ var Engine = (function(global) {
      */
     function updateEntities(dt) {
         enemies.forEach(function(enemy) {
+            enemy.move();
             enemy.update(dt);
         });
         player.handleInput();
