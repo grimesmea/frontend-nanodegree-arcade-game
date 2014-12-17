@@ -40,19 +40,19 @@ Player.prototype.constructor = Player;
 
 Player.prototype.handleInput = function(key) {
   if (key === 'left') {
-    this.x -= 100;
+    this.x -= 85;
   }
 
   if (key === 'up') {
-    this.y -= 100;
+    this.y -= 85;
   }
 
   if (key === 'right') {
-    this.x += 100;
+    this.x += 85;
   }
 
   if (key === 'down') {
-    this.y += 100;
+    this.y += 85;
   }
 };
 
