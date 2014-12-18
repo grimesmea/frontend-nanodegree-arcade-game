@@ -22,8 +22,20 @@ Entity.prototype.render = function() {
 };
 
 Entity.prototype.move = function(dt) {
-  this.x += this.speedX * dt;
-  this.y += this.speedY * dt;
+  var newX = this.x + this.speedX * dt;
+  var newY = this.y + this.speedY * dt;
+
+  if(newX < canvas.width + 100) {
+    this.x += this.speedX * dt;
+  } else {
+    this.x = -100;
+  }
+
+  if(newY < canvas.height + 100) {
+    this.y += this.speedY * dt;
+  } else {
+    this.y = this.y;
+  }
 };
 
 // Now write your own player class
