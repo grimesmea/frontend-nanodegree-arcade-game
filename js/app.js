@@ -22,20 +22,7 @@ Entity.prototype.render = function() {
 };
 
 Entity.prototype.move = function(dt) {
-  var newX = this.x + this.speedX * dt;
-  var newY = this.y + this.speedY * dt;
-
-  if(newX < canvas.width + 100) {
-    this.x += this.speedX * dt;
-  } else {
-    this.x = -100;
-  }
-
-  if(newY < canvas.height + 100) {
-    this.y += this.speedY * dt;
-  } else {
-    this.y = this.y;
-  }
+  this.getMovement(dt);
 };
 
 // Now write your own player class
@@ -55,6 +42,23 @@ var Enemy = function(x, y) {
 
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
+
+Enemy.prototype.getMovement = function(dt) {
+  var newX = this.x + this.speedX * dt;
+  var newY = this.y + this.speedY * dt;
+
+  if(newX < canvas.width) {
+    this.x += this.speedX * dt;
+  } else {
+    this.x = -100;
+  }
+
+  if(newY < canvas.height + 100) {
+    this.y += this.speedY * dt;
+  } else {
+    this.y = this.y;
+  }
+};
 
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
