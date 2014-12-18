@@ -92,11 +92,10 @@ var Engine = (function(global) {
      */
     function updateEntities(dt) {
         enemies.forEach(function(enemy) {
-            enemy.move();
             enemy.update(dt);
         });
         player.handleInput();
-        player.update();
+        player.update(dt);
     }
 
     /* This function initially draws the "game level", it will then call
@@ -183,5 +182,4 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-    global.dt = main.dt;
 })(this);

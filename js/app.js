@@ -10,6 +10,11 @@ Entity.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    console.log(dt);
+    enemies.forEach(function(enemy) {
+        enemy.move(dt);
+    });
+    player.handleInput();
 };
 
 // Draw the entity on the screen, required method for game
@@ -17,9 +22,10 @@ Entity.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Entity.prototype.move = function() {
-  this.x += this.speedX;
-  this.y += this.speedY;
+Entity.prototype.move = function(dt) {
+  console.log(dt);
+  this.x += this.speedX * dt;
+  this.y += this.speedY * dt;
 };
 
 // Now write your own player class
@@ -28,8 +34,8 @@ Entity.prototype.move = function() {
 var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
-  var maxSpeed = 3;
-  var minSpeed = 1;
+  var maxSpeed = 200;
+  var minSpeed = 100;
 
   this.sprite = 'images/enemy-bug.png';
 
