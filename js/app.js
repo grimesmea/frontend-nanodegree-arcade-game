@@ -52,9 +52,6 @@ var Player = function(x, y) {
   Entity.call(this, x, y);
 
   this.sprite = 'images/char-princess-girl.png';
-
-  this.speedX = 0;
-  this.speedY = 0;
 };
 
 Player.prototype = Object.create(Entity.prototype);
