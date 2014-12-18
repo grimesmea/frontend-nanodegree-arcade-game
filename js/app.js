@@ -26,15 +26,13 @@ Entity.prototype.move = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Enemy = function(x, y) {
-  //this.x = x;
-  //this.y = y;
-
   Entity.call(this, x, y);
 
   var maxSpeed = 3;
   var minSpeed = 1;
 
   this.sprite = 'images/enemy-bug.png';
+
   this.speedX = getSpeed(maxSpeed, minSpeed);
   this.speedY = 0;
 };
