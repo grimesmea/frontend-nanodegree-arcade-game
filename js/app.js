@@ -10,7 +10,6 @@ Entity.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    console.log(dt);
     enemies.forEach(function(enemy) {
         enemy.move(dt);
     });
@@ -23,7 +22,6 @@ Entity.prototype.render = function() {
 };
 
 Entity.prototype.move = function(dt) {
-  console.log(dt);
   this.x += this.speedX * dt;
   this.y += this.speedY * dt;
 };
