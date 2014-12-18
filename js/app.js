@@ -79,7 +79,7 @@ Player.prototype.handleInput = function(key) {
 var player = new Player(200, 380);
 var enemies = [];
 
-enemies.push(new Enemy(50, 50));
+enemies.push(new Enemy(-100, 50));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
