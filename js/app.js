@@ -17,26 +17,30 @@ Entity.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Entity.prototype.move = function() {
+  this.x += this.speedX;
+  this.y += this.speedY;
+};
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Enemy = function(x, y) {
+  //this.x = x;
+  //this.y = y;
+
   Entity.call(this, x, y);
 
   var maxSpeed = 3;
   var minSpeed = 1;
 
   this.sprite = 'images/enemy-bug.png';
-  this.speed = getSpeed(maxSpeed, minSpeed);
+  this.speedX = getSpeed(maxSpeed, minSpeed);
+  this.speedY = 0;
 };
 
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
-
-
-Enemy.prototype.move = function() {
-  this.x += this.speed;
-};
 
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
