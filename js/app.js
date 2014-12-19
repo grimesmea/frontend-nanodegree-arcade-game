@@ -71,22 +71,22 @@ Player.prototype.handleInput = function(key) {
   var tempY = this.y;
 
   if (key === 'left') {
-    tempX -= 85;
+    tempX -= 101;
   }
   if (key === 'up') {
-    tempY -= 85;
+    tempY -= 83;
   }
   if (key === 'right') {
-    tempX += 85;
+    tempX += 101;
   }
   if (key === 'down') {
-    tempY += 85;
+    tempY += 83;
   }
 
-  if(tempX > 0 && tempX < canvas.width) {
+  if(tempX > -100 && tempX < canvas.width -100) {
     this.x = tempX;
   }
-  if(tempY > 0 && tempY < canvas.height) {
+  if(tempY > -100 && tempY < (canvas.height - 200)) {
     this.y = tempY;
   }
 };
