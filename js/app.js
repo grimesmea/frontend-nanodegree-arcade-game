@@ -10,19 +10,12 @@ Entity.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    enemies.forEach(function(enemy) {
-        enemy.move(dt);
-    });
-    player.handleInput();
+    this.move(dt);
 };
 
 // Draw the entity on the screen, required method for game
 Entity.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Entity.prototype.move = function(dt) {
-  this.getMovement(dt);
 };
 
 // Now write your own player class
@@ -43,7 +36,7 @@ var Enemy = function(x, y) {
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
 
-Enemy.prototype.getMovement = function(dt) {
+Enemy.prototype.move = function(dt) {
   var newX = this.x + this.speedX * dt;
   var newY = this.y + this.speedY * dt;
 
@@ -74,21 +67,32 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.handleInput = function(key) {
+  var tempX = this.x;
+  var tempY = this.y;
+
   if (key === 'left') {
-    this.x -= 85;
+    tempX -= 85;
   }
-
   if (key === 'up') {
-    this.y -= 85;
+    tempY -= 85;
   }
-
   if (key === 'right') {
-    this.x += 85;
+    tempX += 85;
+  }
+  if (key === 'down') {
+    tempY += 85;
   }
 
-  if (key === 'down') {
-    this.y += 85;
+  if(tempX > 0 && tempX < canvas.width) {
+    this.x = tempX;
   }
+  if(tempY > 0 && tempY < canvas.height) {
+    this.y = tempY;
+  }
+};
+
+Player.prototype.move = function(dt) {
+
 };
 
 // Now instantiate your objects.

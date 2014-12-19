@@ -94,7 +94,6 @@ var Engine = (function(global) {
         enemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.handleInput();
         player.update(dt);
     }
 
