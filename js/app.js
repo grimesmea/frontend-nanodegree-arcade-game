@@ -6,12 +6,12 @@ var Entity = function(x, y) {
 // Update the entity's position, required method for game
 // Parameter: dt, a time delta between ticks
 Entity.prototype.update = function(dt) {
-    this.move(dt);
+  this.move(dt);
 };
 
 // Draw the entity on the screen, required method for game
 Entity.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 var Enemy = function(x, y) {
@@ -84,9 +84,7 @@ Player.prototype.handleInput = function(key) {
   }
 };
 
-Player.prototype.move = function(dt) {
-
-};
+Player.prototype.move = function(dt) {};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
