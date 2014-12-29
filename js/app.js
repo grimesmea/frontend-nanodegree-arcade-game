@@ -7,6 +7,7 @@ var Entity = function(x, y) {
 // Parameter: dt, a time delta between ticks
 Entity.prototype.update = function(dt) {
   this.move(dt);
+  this.checkCollisions();
 };
 
 // Draw the entity on the screen, required method for game
@@ -45,6 +46,8 @@ Enemy.prototype.move = function(dt) {
     this.y = this.y;
   }
 };
+
+Enemy.prototype.checkCollisions = function() {};
 
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
@@ -86,6 +89,17 @@ Player.prototype.handleInput = function(key) {
 
 Player.prototype.move = function(dt) {};
 
+Player.prototype.checkCollisions = function() {
+  for(var i = 0; i < enemies.length; i++){
+    if(isColliding(enemies[i]) === true) {
+      console.log('!!!');
+    }
+    else {
+      console.log('jj');
+    }
+  }
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -111,10 +125,15 @@ document.addEventListener('keyup', function(e) {
   player.handleInput(allowedKeys[e.keyCode]);
 });
 
-function checkCollisions() {
-  for(var i = 0; i < enemies.length; i++) {
-    if(isColliding(enemies[i])) {
-      reset();
-    }
+function isColliding(collidable) {
+  var collisionStatus = false;
+
+  if(player.x + 74 > collidable.x + 74 &&
+     player.x < collidable.x &&
+     player.y - 74 > collidable.y - 74 &&
+     player.y < collidable.y) {
+    collisionStatus = true;
   }
+
+  return isColliding;
 }
