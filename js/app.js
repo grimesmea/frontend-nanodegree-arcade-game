@@ -110,3 +110,11 @@ document.addEventListener('keyup', function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function checkCollisions() {
+  for(var i = 0; i < enemies.length; i++) {
+    if(isColliding(enemies[i])) {
+      reset();
+    }
+  }
+}
