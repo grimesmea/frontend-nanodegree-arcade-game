@@ -53,6 +53,9 @@ function getSpeed(minSpeed, maxSpeed) {
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
+  originalX = x;
+  originalY = y;
+
   this.sprite = 'images/char-princess-girl-cropped.png';
 };
 
@@ -89,9 +92,14 @@ Player.prototype.move = function(dt) {};
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
-      console.log('hit');
+      this.reset();
     }
   }
+};
+
+Player.prototype.reset = function() {
+  this.x = originalX;
+  this.y = originalY;
 };
 
 var player = new Player(215, 430);
