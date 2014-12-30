@@ -4,8 +4,6 @@ var Entity = function(x, y) {
 };
 
 Entity.prototype.update = function(dt) {
-  this.move(dt);
-  this.checkCollisions();
 };
 
 Entity.prototype.render = function() {
@@ -44,7 +42,9 @@ Enemy.prototype.move = function(dt) {
   }
 };
 
-Enemy.prototype.checkCollisions = function() {};
+Enemy.prototype.update = function(dt) {
+  this.move(dt);
+};
 
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
@@ -87,8 +87,6 @@ Player.prototype.handleInput = function(key) {
   }
 };
 
-Player.prototype.move = function(dt) {};
-
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
@@ -100,6 +98,10 @@ Player.prototype.checkCollisions = function() {
 Player.prototype.reset = function() {
   this.x = originalX;
   this.y = originalY;
+};
+
+Player.prototype.update = function(dt) {
+  this.checkCollisions();
 };
 
 var player = new Player(215, 430);
