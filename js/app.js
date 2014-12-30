@@ -76,7 +76,7 @@ Player.prototype.handleInput = function(key) {
     tempY += 83;
   }
 
-  if(tempX > -100 && tempX < canvas.width -100) {
+  if(tempX > 100 && tempX < canvas.width - 100) {
     this.x = tempX;
   }
   if(tempY > -100 && tempY < (canvas.height - 200)) {
@@ -89,9 +89,7 @@ Player.prototype.move = function(dt) {};
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
-    }
-    else {
-      console.log('jj');
+      console.log('hit');
     }
   }
 };
@@ -121,13 +119,14 @@ document.addEventListener('keyup', function(e) {
 function isColliding(collidable) {
   var collisionStatus = false;
 
-  if(player.x + 74 > collidable.x + 74 &&
-     player.x < collidable.x &&
-     player.y - 74 > collidable.y - 74 &&
-     player.y < collidable.y) {
-    console.log('hit');
-    collisionStatus = true;
-  }
+  if(player.x < collidable.x + 98 &&
+     collidable.x < player.x + 75 &&
+     player.y - 12 < collidable.y - 65 &&
+     collidable.y - 10 < player.y - 60) {
 
+      console.log('y:' + player.y);
+    //collisionStatus = true;
+  }
+  console.log('x:' + player.x);
   return collisionStatus;
 }
