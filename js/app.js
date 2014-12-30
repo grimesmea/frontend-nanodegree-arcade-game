@@ -3,14 +3,11 @@ var Entity = function(x, y) {
   this.y = y;
 };
 
-// Update the entity's position, required method for game
-// Parameter: dt, a time delta between ticks
 Entity.prototype.update = function(dt) {
   this.move(dt);
   this.checkCollisions();
 };
 
-// Draw the entity on the screen, required method for game
 Entity.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -21,7 +18,7 @@ var Enemy = function(x, y) {
   var maxSpeed = 200;
   var minSpeed = 100;
 
-  this.sprite = 'images/enemy-bug.png';
+  this.sprite = 'images/enemy-bug-cropped.png';
 
   this.speedX = getSpeed(maxSpeed, minSpeed);
   this.speedY = 0;
@@ -56,7 +53,7 @@ function getSpeed(minSpeed, maxSpeed) {
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
-  this.sprite = 'images/char-princess-girl.png';
+  this.sprite = 'images/char-princess-girl-cropped.png';
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -79,10 +76,10 @@ Player.prototype.handleInput = function(key) {
     tempY += 83;
   }
 
-  if(tempX > -100 && tempX < canvas.width -100) {
+  if(tempX > 0 && tempX < canvas.width - 75) {
     this.x = tempX;
   }
-  if(tempY > -100 && tempY < (canvas.height - 200)) {
+  if(tempY > 0 && tempY < canvas.height - 100) {
     this.y = tempY;
   }
 };
@@ -92,22 +89,16 @@ Player.prototype.move = function(dt) {};
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
-      console.log('!!!');
-    }
-    else {
-      console.log('jj');
+      console.log('hit');
     }
   }
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-var player = new Player(200, 380);
+var player = new Player(215, 430);
 var enemies = [];
 
-enemies.push(new Enemy(-100, 50));
-enemies.push(new Enemy(-100, 50));
+enemies.push(new Enemy(-100, 299));
+enemies.push(new Enemy(-100, 299));
 enemies.push(new Enemy(-100, 133));
 enemies.push(new Enemy(-100, 216));
 enemies.push(new Enemy(-100, 133));
@@ -126,14 +117,12 @@ document.addEventListener('keyup', function(e) {
 });
 
 function isColliding(collidable) {
-  var collisionStatus = false;
-
-  if(player.x + 74 > collidable.x + 74 &&
-     player.x < collidable.x &&
-     player.y - 74 > collidable.y - 74 &&
-     player.y < collidable.y) {
-    collisionStatus = true;
+  if(player.x > collidable.x + 98 ||
+     collidable.x > player.x + 75 ||
+     player.y + 40 > collidable.y + 65 ||
+     collidable.y + 10 > player.y + 87) {
+    return false;
+  } else {
+    return true;
   }
-
-  return isColliding;
 }
