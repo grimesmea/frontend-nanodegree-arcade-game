@@ -46,10 +46,6 @@ Enemy.prototype.update = function(dt) {
   this.move(dt);
 };
 
-function getSpeed(minSpeed, maxSpeed) {
-  return Math.random() * (maxSpeed - minSpeed) + minSpeed;
-}
-
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
@@ -125,6 +121,10 @@ document.addEventListener('keyup', function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function getSpeed(minSpeed, maxSpeed) {
+  return Math.random() * (maxSpeed - minSpeed) + minSpeed;
+}
 
 function isColliding(collidable) {
   if(player.x + 30 > collidable.x + 98 ||
