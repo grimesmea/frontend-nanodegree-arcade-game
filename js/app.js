@@ -18,7 +18,7 @@ var Enemy = function(x, y) {
   var maxSpeed = 200;
   var minSpeed = 100;
 
-  this.sprite = 'images/enemy-bug.png';
+  this.sprite = 'images/enemy-bug-cropped.png';
 
   this.speedX = getSpeed(maxSpeed, minSpeed);
   this.speedY = 0;
@@ -53,7 +53,7 @@ function getSpeed(minSpeed, maxSpeed) {
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
-  this.sprite = 'images/char-princess-girl.png';
+  this.sprite = 'images/char-princess-girl-cropped.png';
 };
 
 Player.prototype = Object.create(Entity.prototype);
