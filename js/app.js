@@ -96,7 +96,7 @@ Player.prototype.checkCollisions = function() {
   }
 };
 
-var player = new Player(200, 380);
+var player = new Player(215, 430);
 var enemies = [];
 
 enemies.push(new Enemy(-100, 299));
