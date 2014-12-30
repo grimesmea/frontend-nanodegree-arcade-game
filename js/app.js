@@ -99,8 +99,8 @@ Player.prototype.checkCollisions = function() {
 var player = new Player(200, 380);
 var enemies = [];
 
-enemies.push(new Enemy(-100, 50));
-enemies.push(new Enemy(-100, 50));
+enemies.push(new Enemy(-100, 299));
+enemies.push(new Enemy(-100, 299));
 enemies.push(new Enemy(-100, 133));
 enemies.push(new Enemy(-100, 216));
 enemies.push(new Enemy(-100, 133));
