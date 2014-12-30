@@ -76,10 +76,10 @@ Player.prototype.handleInput = function(key) {
     tempY += 83;
   }
 
-  if(tempX > 100 && tempX < canvas.width - 100) {
+  if(tempX > 0 && tempX < canvas.width - 75) {
     this.x = tempX;
   }
-  if(tempY > -100 && tempY < (canvas.height - 200)) {
+  if(tempY > 0 && tempY < canvas.height - 100) {
     this.y = tempY;
   }
 };
