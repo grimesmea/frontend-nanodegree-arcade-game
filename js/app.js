@@ -125,10 +125,10 @@ document.addEventListener('keyup', function(e) {
 });
 
 function isColliding(collidable) {
-  if(player.x > collidable.x + 98 ||
-     collidable.x > player.x + 75 ||
-     player.y + 40 > collidable.y + 65 ||
-     collidable.y + 10 > player.y + 87) {
+  if(player.x + 30 > collidable.x + 98 ||
+     collidable.x > player.x + 45 ||
+     player.y + 75 > collidable.y + 65 ||
+     collidable.y + 10 > player.y + 85) {
     return false;
   } else {
     return true;
