@@ -123,7 +123,6 @@ function isColliding(collidable) {
      collidable.y + 10 > player.y + 87) {
     return false;
   } else {
-    console.log('y:' + player.y);
     return true;
   }
 }
