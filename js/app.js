@@ -117,16 +117,13 @@ document.addEventListener('keyup', function(e) {
 });
 
 function isColliding(collidable) {
-  var collisionStatus = false;
-
-  if(player.x < collidable.x + 98 &&
-     collidable.x < player.x + 75 &&
-     player.y - 12 < collidable.y - 65 &&
-     collidable.y - 10 < player.y - 60) {
-
-      console.log('y:' + player.y);
-    //collisionStatus = true;
+  if(player.x > collidable.x + 98 ||
+     collidable.x > player.x + 75 ||
+     player.y + 40 > collidable.y + 65 ||
+     collidable.y + 10 > player.y + 87) {
+    return false;
+  } else {
+    console.log('y:' + player.y);
+    return true;
   }
-  console.log('x:' + player.x);
-  return collisionStatus;
 }
