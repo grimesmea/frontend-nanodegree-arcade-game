@@ -3,14 +3,11 @@ var Entity = function(x, y) {
   this.y = y;
 };
 
-// Update the entity's position, required method for game
-// Parameter: dt, a time delta between ticks
 Entity.prototype.update = function(dt) {
   this.move(dt);
   this.checkCollisions();
 };
 
-// Draw the entity on the screen, required method for game
 Entity.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -92,7 +89,6 @@ Player.prototype.move = function(dt) {};
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
-      console.log('!!!');
     }
     else {
       console.log('jj');
@@ -100,9 +96,6 @@ Player.prototype.checkCollisions = function() {
   }
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 var player = new Player(200, 380);
 var enemies = [];
 
@@ -132,8 +125,9 @@ function isColliding(collidable) {
      player.x < collidable.x &&
      player.y - 74 > collidable.y - 74 &&
      player.y < collidable.y) {
+    console.log('hit');
     collisionStatus = true;
   }
 
-  return isColliding;
+  return collisionStatus;
 }
