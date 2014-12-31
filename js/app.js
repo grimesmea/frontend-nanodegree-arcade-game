@@ -42,6 +42,10 @@ Enemy.prototype.move = function(dt) {
   }
 };
 
+Enemy.prototype.onCollision = function() {
+  player.reset();
+};
+
 Enemy.prototype.update = function(dt) {
   this.move(dt);
 };
@@ -86,7 +90,7 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
-      this.reset();
+      enemies[i].onCollision();
     }
   }
 };
