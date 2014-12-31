@@ -157,6 +157,23 @@ function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
 
+function move(dt) {
+var newX = this.x + this.speedX * dt;
+var newY = this.y + this.speedY * dt;
+
+if(newX < canvas.width) {
+  this.x += this.speedX * dt;
+} else {
+  this.x = -100;
+}
+
+if(newY < canvas.height + 100) {
+  this.y += this.speedY * dt;
+} else {
+  this.y = this.y;
+}
+}
+
 function isColliding(collidable) {
   if(player.x + 30 > collidable.x + 98 ||
      collidable.x > player.x + 45 ||
