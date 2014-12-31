@@ -56,6 +56,11 @@ var Player = function(x, y) {
   originalX = x;
   originalY = y;
 
+  this.hitboxX = x + 30;
+  this.hitboxY = y + 75;
+  this.hitboxWidth = 15;
+  this.hitboxHeight = 10;
+
   this.sprite = 'images/char-princess-girl-cropped.png';
 };
 
@@ -101,6 +106,10 @@ Player.prototype.reset = function() {
 };
 
 Player.prototype.update = function(dt) {
+  this.hitboxX = this.x + 30;
+  this.hitboxY = this.y + 75;
+  this.hitboxWidth = 15;
+  this.hitboxHeight = 10;
   this.checkCollisions();
 };
 
@@ -179,10 +188,10 @@ if(newY < canvas.height + 100) {
 }
 
 function isColliding(collidable) {
-  if(player.x + 30 > collidable.x + 98 ||
-     collidable.x > player.x + 45 ||
-     player.y + 75 > collidable.y + 65 ||
-     collidable.y + 10 > player.y + 85) {
+  if(player.hitboxX > collidable.x + 98 ||
+     collidable.x > player.hitboxX + player.hitboxWidth ||
+     player.hitboxY > collidable.y + 65 ||
+     collidable.y + 10 > player.hitboxY + player.hitboxHeight) {
     return false;
   } else {
     return true;
