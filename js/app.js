@@ -10,13 +10,6 @@ Entity.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Entity.prototype.getHitbox = function(x, y, width, height) {
-  var hitboxX = x;
-  var hitboxY = y;
-  var hitboxWidth  = width;
-  var hitboxHeigth = height;
-};
-
 var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
