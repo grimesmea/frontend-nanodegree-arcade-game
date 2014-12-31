@@ -69,6 +69,8 @@ var Player = function(x, y) {
   this.hitboxHeight = 10;
 
   this.sprite = 'images/char-princess-girl-cropped.png';
+
+  this.score = 0;
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -156,7 +158,8 @@ Gem.prototype = Object.create(Entity.prototype);
 Gem.prototype.constructor = Gem;
 
 Gem.prototype.onCollision = function() {
-  console.log('Get points!');
+  player.score += this.type;
+  gems.splice(gems.indexOf(this), 1);
 };
 
 var player = new Player(215, 430);
