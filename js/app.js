@@ -105,6 +105,12 @@ Player.prototype.checkCollisions = function() {
       enemies[i].onCollision();
     }
   }
+
+  for(var j = 0; j < gems.length; j++){
+    if(isColliding(gems[j]) === true) {
+      gems[j].onCollision();
+    }
+  }
 };
 
 Player.prototype.reset = function() {
