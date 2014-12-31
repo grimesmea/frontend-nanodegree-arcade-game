@@ -109,7 +109,17 @@ var gemTypes = {
 var Gem = function(x, y, gemType) {
   Entity.call(this, x, y);
 
-  this.sprite = 'images/gem-green-resized.png';
+  this.type = gemType;
+
+  if(this.type === gemTypes.GREEN) {
+    this.sprite = 'images/gem-green-resized.png';
+  }
+  if(this.type === gemTypes.BLUE) {
+    this.sprite = 'images/gem-blue-resized.png';
+  }
+  if(this.type === gemTypes.ORANGE) {
+    this.sprite = 'images/gem-orange-resized.png';
+  }
 };
 
 Gem.prototype = Object.create(Entity.prototype);
