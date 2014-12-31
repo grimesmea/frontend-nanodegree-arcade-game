@@ -48,6 +48,10 @@ Enemy.prototype.onCollision = function() {
 
 Enemy.prototype.update = function(dt) {
   this.move(dt);
+  this.hitboxX = this.x + 30;
+  this.hitboxY = this.y + 75;
+  this.hitboxWidth = 15;
+  this.hitboxHeight = 10;
 };
 
 var Player = function(x, y) {
@@ -56,10 +60,10 @@ var Player = function(x, y) {
   originalX = x;
   originalY = y;
 
-  this.hitboxX = x + 30;
-  this.hitboxY = y + 75;
-  this.hitboxWidth = 15;
-  this.hitboxHeight = 10;
+  this.hitboxX = x;
+  this.hitboxY = y;
+  this.hitboxWidth = 98;
+  this.hitboxHeight = 65;
 
   this.sprite = 'images/char-princess-girl-cropped.png';
 };
