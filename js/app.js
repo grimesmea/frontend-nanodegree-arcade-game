@@ -14,7 +14,7 @@ Entity.prototype.getHitbox = function(x, y, width, height) {
   var hitboxX = x;
   var hitboxY = y;
   var hitboxWidth  = width;
-  var hitboxWeigth = height;
+  var hitboxHeigth = height;
 };
 
 var Enemy = function(x, y) {
