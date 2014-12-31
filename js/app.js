@@ -118,6 +118,7 @@ Gem.prototype.constructor = Gem;
 
 var player = new Player(215, 430);
 var enemies = [];
+var gems = [];
 
 enemies.push(new Enemy(-100, 299));
 enemies.push(new Enemy(-100, 299));
