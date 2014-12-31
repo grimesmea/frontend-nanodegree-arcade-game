@@ -136,9 +136,9 @@ enemies.push(new Enemy(-100, 133));
 enemies.push(new Enemy(-100, 216));
 enemies.push(new Enemy(-100, 133));
 
-gems.push(new Gem(200, 200, gemTypes.GREEN));
-gems.push(new Gem(100, 300, gemTypes.BLUE));
-gems.push(new Gem(300, 100, gemTypes.ORANGE));
+gems.push(new Gem(220, 225, gemTypes.GREEN));
+gems.push(new Gem(120, 310, gemTypes.BLUE));
+gems.push(new Gem(325, 140, gemTypes.ORANGE));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
