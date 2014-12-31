@@ -109,7 +109,7 @@ var gemTypes = {
 var Gem = function(x, y, gemType) {
   Entity.call(this, x, y);
 
-  this.sprite = 'images/char-princess-girl-cropped.png';
+  this.sprite = 'images/gem-green-resized.png';
 };
 
 Gem.prototype = Object.create(Entity.prototype);
@@ -125,6 +125,8 @@ enemies.push(new Enemy(-100, 299));
 enemies.push(new Enemy(-100, 133));
 enemies.push(new Enemy(-100, 216));
 enemies.push(new Enemy(-100, 133));
+
+gems.push(new Gem(200, 200, gemTypes.GREEN));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
