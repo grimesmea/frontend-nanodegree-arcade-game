@@ -103,7 +103,7 @@ Player.prototype.update = function(dt) {
 var gemTypes = {
   GREEN: 100,
   BLUE: 250,
-  YELLOW: 550,
+  ORANGE: 550,
 };
 
 var Gem = function(x, y, gemType) {
