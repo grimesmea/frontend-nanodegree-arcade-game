@@ -155,6 +155,9 @@ var Gem = function(x, y, gemType) {
 Gem.prototype = Object.create(Entity.prototype);
 Gem.prototype.constructor = Gem;
 
+Gem.prototype.onCollision = function() {
+  console.log('Get points!');
+};
 
 var player = new Player(215, 430);
 var enemies = [];
