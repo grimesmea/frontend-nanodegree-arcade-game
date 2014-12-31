@@ -100,6 +100,22 @@ Player.prototype.update = function(dt) {
   this.checkCollisions();
 };
 
+var gemTypes = {
+  GREEN: 100,
+  BLUE: 250,
+  YELLOW: 550,
+};
+
+var Gem = function(x, y, gemType) {
+  Entity.call(this, x, y);
+
+  this.sprite = 'images/char-princess-girl-cropped.png';
+};
+
+Gem.prototype = Object.create(Entity.prototype);
+Gem.prototype.constructor = Gem;
+
+
 var player = new Player(215, 430);
 var enemies = [];
 
