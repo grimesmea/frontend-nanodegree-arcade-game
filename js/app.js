@@ -16,6 +16,11 @@ var Enemy = function(x, y) {
   var maxSpeed = 200;
   var minSpeed = 100;
 
+  this.hitboxX = this.x;
+  this.hitboxY = this.y + 10;
+  this.hitboxWidth = 98;
+  this.hitboxHeight = 55;
+
   this.sprite = 'images/enemy-bug-cropped.png';
 
   this.speedX = getSpeed(maxSpeed, minSpeed);
@@ -48,10 +53,8 @@ Enemy.prototype.onCollision = function() {
 
 Enemy.prototype.update = function(dt) {
   this.move(dt);
-  this.hitboxX = this.x + 30;
-  this.hitboxY = this.y + 75;
-  this.hitboxWidth = 15;
-  this.hitboxHeight = 10;
+  this.hitboxX = this.x;
+  this.hitboxY = this.y + 10;
 };
 
 var Player = function(x, y) {
@@ -60,10 +63,10 @@ var Player = function(x, y) {
   originalX = x;
   originalY = y;
 
-  this.hitboxX = x;
-  this.hitboxY = y;
-  this.hitboxWidth = 98;
-  this.hitboxHeight = 65;
+  this.hitboxX = x + 30;
+  this.hitboxY = y + 75;
+  this.hitboxWidth = 15;
+  this.hitboxHeight = 10;
 
   this.sprite = 'images/char-princess-girl-cropped.png';
 };
@@ -112,8 +115,7 @@ Player.prototype.reset = function() {
 Player.prototype.update = function(dt) {
   this.hitboxX = this.x + 30;
   this.hitboxY = this.y + 75;
-  this.hitboxWidth = 15;
-  this.hitboxHeight = 10;
+
   this.checkCollisions();
 };
 
@@ -127,6 +129,11 @@ var Gem = function(x, y, gemType) {
   Entity.call(this, x, y);
 
   this.type = gemType;
+
+  this.hitboxX = this.x;
+  this.hitboxY = this.y;
+  this.hitboxWidth = 60;
+  this.hitboxHeight = 63;
 
   if(this.type === gemTypes.GREEN) {
     this.sprite = 'images/gem-green-resized.png';
@@ -192,10 +199,10 @@ if(newY < canvas.height + 100) {
 }
 
 function isColliding(collidable) {
-  if(player.hitboxX > collidable.x + 98 ||
-     collidable.x > player.hitboxX + player.hitboxWidth ||
-     player.hitboxY > collidable.y + 65 ||
-     collidable.y + 10 > player.hitboxY + player.hitboxHeight) {
+  if(player.hitboxX > collidable.hitboxX + collidable.hitboxWidth||
+     collidable.hitboxX > player.hitboxX + player.hitboxWidth ||
+     player.hitboxY > collidable.hitboxY + collidable.hitboxHeight ||
+     collidable.hitboxY > player.hitboxY + player.hitboxHeight) {
     return false;
   } else {
     return true;
