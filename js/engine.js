@@ -156,7 +156,7 @@ var Engine = (function(global) {
       gem.render();
     });
 
-    keys.forEach(function(key) {
+    levelKeys.forEach(function(key) {
       key.render();
     });
 

@@ -71,6 +71,7 @@ var Player = function(x, y) {
   this.sprite = 'images/char-princess-girl-cropped.png';
 
   this.score = 0;
+  this.numberOfKeys = 0;
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -111,6 +112,13 @@ Player.prototype.checkCollisions = function() {
   for(var j = 0; j < gems.length; j++){
     if(isColliding(gems[j]) === true) {
       gems[j].onCollision();
+    }
+  }
+
+  for(var k = 0; k < levelKeys.length; k++){
+    if(isColliding(levelKeys[k]) === true) {
+      console.log('hi');
+      levelKeys[k].onCollision();
     }
   }
 };
@@ -162,7 +170,7 @@ Gem.prototype.onCollision = function() {
   gems.splice(gems.indexOf(this), 1);
 };
 
-var Key = function(x, y) {
+var LevelKey = function(x, y) {
   Entity.call(this, x, y);
 
   this.hitboxX = this.x + 8;
@@ -173,16 +181,18 @@ var Key = function(x, y) {
   this.sprite = 'images/key-cropped.png';
 };
 
-Key.prototype = Object.create(Entity.prototype);
-Key.prototype.constructor = Key;
+LevelKey.prototype = Object.create(Entity.prototype);
+LevelKey.prototype.constructor = LevelKey;
 
-Key.prototype.onCollision = function() {
+LevelKey.prototype.onCollision = function() {
+  player.numberOfKeys++;
+  levelKeys.splice(levelKeys.indexOf(this), 1);
 };
 
 var player = new Player(215, 430);
 var enemies = [];
 var gems = [];
-var keys = [];
+var levelKeys = [];
 
 enemies.push(new Enemy(-100, 299));
 enemies.push(new Enemy(-100, 299));
@@ -194,8 +204,7 @@ gems.push(new Gem(220, 225, gemTypes.GREEN));
 gems.push(new Gem(120, 310, gemTypes.BLUE));
 gems.push(new Gem(325, 140, gemTypes.ORANGE));
 
-keys.push(new Key(70, 200));
-
+levelKeys.push(new LevelKey(220, 299));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
