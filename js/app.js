@@ -162,6 +162,21 @@ Gem.prototype.onCollision = function() {
   gems.splice(gems.indexOf(this), 1);
 };
 
+var Key = function(x, y) {
+  Entity.call(this, x, y);
+
+  this.hitboxX = this.x + 8;
+  this.hitboxY = this.y;
+  this.hitboxWidth = 43;
+  this.hitboxHeight = 83;
+};
+
+Key.prototype = Object.create(Entity.prototype);
+Key.prototype.constructor = Key;
+
+Key.prototype.onCollision = function() {
+};
+
 var player = new Player(215, 430);
 var enemies = [];
 var gems = [];
