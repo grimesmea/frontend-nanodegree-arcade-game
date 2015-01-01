@@ -169,6 +169,8 @@ var Key = function(x, y) {
   this.hitboxY = this.y;
   this.hitboxWidth = 43;
   this.hitboxHeight = 83;
+
+  this.sprite = 'images/key-cropped.png';
 };
 
 Key.prototype = Object.create(Entity.prototype);
