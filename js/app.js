@@ -70,6 +70,7 @@ var Player = function(x, y) {
 
   this.sprite = 'images/char-princess-girl-cropped.png';
 
+  this.lives = 3;
   this.score = 0;
   this.numberOfKeys = 0;
 };
