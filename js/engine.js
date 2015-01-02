@@ -23,7 +23,8 @@ var Engine = (function(global) {
       win = global.window,
       canvas = doc.createElement('canvas'),
       ctx = canvas.getContext('2d'),
-      lastTime;
+      lastTime,
+      currentState;
 
   canvas.width = 505;
   canvas.height = 606;
@@ -174,7 +175,7 @@ var Engine = (function(global) {
    * those sorts of things. It's only called once by the init() method.
    */
   function reset() {
-    // noop
+    currentState = GameState.GAMESTART;
   }
 
   /* Go ahead and load all of the images we know we're going to need to
