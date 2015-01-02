@@ -145,6 +145,11 @@ var Engine = (function(global) {
     }
 
     renderEntities();
+
+    if(this.currentState === GameState.GAMEOVER) {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
   }
 
   /* This function is called by the render function and is called on each game
@@ -175,7 +180,7 @@ var Engine = (function(global) {
    * those sorts of things. It's only called once by the init() method.
    */
   function reset() {
-    currentState = GameState.GAMESTART;
+    this.currentState = GameState.GAMESTART;
   }
 
   /* Go ahead and load all of the images we know we're going to need to
@@ -201,6 +206,6 @@ var Engine = (function(global) {
    */
   global.ctx = ctx;
   global.canvas = canvas;
-  global.currentState = currentState;
   global.GameState = GameState;
+  global.currentState = currentState;
 })(this);
