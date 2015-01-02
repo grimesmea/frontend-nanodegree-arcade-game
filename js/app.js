@@ -112,6 +112,7 @@ Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
       enemies[i].onCollision();
+      break;
     }
   }
 
