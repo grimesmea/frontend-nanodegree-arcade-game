@@ -48,6 +48,11 @@ Enemy.prototype.move = function(dt) {
 };
 
 Enemy.prototype.onCollision = function() {
+  player.lives--;
+
+  if(player.lives === 0) {
+    currentState = 3;
+  }
   player.reset();
 };
 
