@@ -143,13 +143,13 @@ var Gem = function(x, y, gemType) {
   this.hitboxWidth = 60;
   this.hitboxHeight = 63;
 
-  if(this.type === gemTypes.GREEN) {
+  if(this.type === GemTypes.GREEN) {
     this.sprite = 'images/gem-green-resized.png';
   }
-  if(this.type === gemTypes.BLUE) {
+  if(this.type === GemTypes.BLUE) {
     this.sprite = 'images/gem-blue-resized.png';
   }
-  if(this.type === gemTypes.ORANGE) {
+  if(this.type === GemTypes.ORANGE) {
     this.sprite = 'images/gem-orange-resized.png';
   }
 };
@@ -172,9 +172,9 @@ enemies.push(new Enemy(-100, 133));
 enemies.push(new Enemy(-100, 216));
 enemies.push(new Enemy(-100, 133));
 
-gems.push(new Gem(220, 225, gemTypes.GREEN));
-gems.push(new Gem(120, 310, gemTypes.BLUE));
-gems.push(new Gem(325, 140, gemTypes.ORANGE));
+gems.push(new Gem(220, 225, GemTypes.GREEN));
+gems.push(new Gem(120, 310, GemTypes.BLUE));
+gems.push(new Gem(325, 140, GemTypes.ORANGE));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
