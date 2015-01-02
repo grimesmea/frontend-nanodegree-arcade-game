@@ -201,4 +201,6 @@ var Engine = (function(global) {
    */
   global.ctx = ctx;
   global.canvas = canvas;
+  global.currentState = currentState;
+  global.GameState = GameState;
 })(this);

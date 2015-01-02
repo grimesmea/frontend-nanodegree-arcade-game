@@ -51,7 +51,7 @@ Enemy.prototype.onCollision = function() {
   player.lives--;
 
   if(player.lives === 0) {
-    currentState = 3;
+    currentState = GameState.GAMEOVER;
   }
   player.reset();
 };
