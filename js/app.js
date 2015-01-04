@@ -84,27 +84,29 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.handleInput = function(key) {
-  var tempX = this.x;
-  var tempY = this.y;
+  if(currentState === GameState.Level) {
+    var tempX = this.x;
+    var tempY = this.y;
 
-  if (key === 'left') {
-    tempX -= 101;
-  }
-  if (key === 'up') {
-    tempY -= 83;
-  }
-  if (key === 'right') {
-    tempX += 101;
-  }
-  if (key === 'down') {
-    tempY += 83;
-  }
+    if (key === 'left') {
+      tempX -= 101;
+    }
+    if (key === 'up') {
+      tempY -= 83;
+    }
+    if (key === 'right') {
+      tempX += 101;
+    }
+    if (key === 'down') {
+      tempY += 83;
+    }
 
-  if(tempX > 0 && tempX < canvas.width - 75) {
-    this.x = tempX;
-  }
-  if(tempY > 0 && tempY < canvas.height - 100) {
-    this.y = tempY;
+    if(tempX > 0 && tempX < canvas.width - 75) {
+      this.x = tempX;
+    }
+    if(tempY > 0 && tempY < canvas.height - 100) {
+      this.y = tempY;
+    }
   }
 };
 
