@@ -31,7 +31,7 @@ var Engine = (function(global) {
   doc.body.appendChild(canvas);
 
   var GameState = {
-    GAMESTART: 1,
+    MENU: 1,
     LEVEL: 2,
     GAMEOVER: 3,
   };
@@ -148,7 +148,7 @@ var Engine = (function(global) {
 
     renderEntities();
 
-    if(this.currentState === GameState.GAMESTART) {
+    if(this.currentState === GameState.MENU) {
 
       ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
       ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
@@ -191,7 +191,7 @@ var Engine = (function(global) {
    * those sorts of things. It's only called once by the init() method.
    */
   function reset() {
-    this.currentState = GameState.GAMESTART;
+    this.currentState = GameState.MENU;
   }
 
   /* Go ahead and load all of the images we know we're going to need to
