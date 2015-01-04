@@ -148,6 +148,15 @@ var Engine = (function(global) {
 
     renderEntities();
 
+    if(this.currentState === GameState.GAMESTART) {
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+      ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.fillRect(0, 100, canvas.width, canvas.height - 170);
+    }
+
     if(this.currentState === GameState.GAMEOVER) {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
