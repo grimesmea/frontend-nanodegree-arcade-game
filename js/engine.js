@@ -24,7 +24,7 @@ var Engine = (function(global) {
       canvas = doc.createElement('canvas'),
       ctx = canvas.getContext('2d'),
       lastTime,
-      currentState;
+      currentGameState;
 
   canvas.width = 505;
   canvas.height = 606;
@@ -97,7 +97,7 @@ var Engine = (function(global) {
    * render methods.
    */
   function updateEntities(dt) {
-    if(this.currentState != GameState.GAMEOVER) {
+    if(this.currentGameState != GameState.GAMEOVER) {
       enemies.forEach(function(enemy) {
         enemy.update(dt);
       });
@@ -148,7 +148,7 @@ var Engine = (function(global) {
 
     renderEntities();
 
-    if(this.currentState === GameState.MENU) {
+    if(this.currentGameState === GameState.MENU) {
 
       ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
       ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
@@ -157,7 +157,7 @@ var Engine = (function(global) {
       ctx.fillRect(0, 100, canvas.width, canvas.height - 170);
     }
 
-    if(this.currentState === GameState.GAMEOVER) {
+    if(this.currentGameState === GameState.GAMEOVER) {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
@@ -191,7 +191,7 @@ var Engine = (function(global) {
    * those sorts of things. It's only called once by the init() method.
    */
   function reset() {
-    this.currentState = GameState.MENU;
+    this.currentGameState = GameState.MENU;
   }
 
   /* Go ahead and load all of the images we know we're going to need to
@@ -218,5 +218,5 @@ var Engine = (function(global) {
   global.ctx = ctx;
   global.canvas = canvas;
   global.GameState = GameState;
-  global.currentState = currentState;
+  global.currentGameState = currentGameState;
 })(this);

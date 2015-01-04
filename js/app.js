@@ -51,7 +51,7 @@ Enemy.prototype.onCollision = function() {
   player.lives--;
 
   if(player.lives === 0) {
-    currentState = GameState.GAMEOVER;
+    currentGameState = GameState.GAMEOVER;
   }
   player.reset();
 };
@@ -84,7 +84,7 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.handleInput = function(key) {
-  if(currentState === GameState.Level) {
+  if(currentGameState === GameState.Level) {
     var tempX = this.x;
     var tempY = this.y;
 
