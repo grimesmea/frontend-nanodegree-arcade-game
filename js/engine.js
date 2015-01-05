@@ -199,6 +199,12 @@ var Engine = (function(global) {
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
     ctx.strokeText('Megafun Castle Adventure!', canvas.width/2 , 150, canvas.width - 100);
+
+    ctx.fillText('Press "ENTER" to start!', canvas.width/2 , 400, canvas.width - 100);
+
+    ctx.font = 'normal 16px Verdana';
+    ctx.fillStyle = 'rgb(66, 66, 66)';
+    ctx.fillText('Help the princess sneak back into the castle!', canvas.width/2 , 200, canvas.width - 100);
   }
 
   function drawGameOverMenu() {
