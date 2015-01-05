@@ -146,8 +146,6 @@ var Engine = (function(global) {
       }
     }
 
-    renderEntities();
-
     if(this.currentGameState === GameState.LEVEL) {
       drawKeysNeeded();
 
@@ -155,6 +153,8 @@ var Engine = (function(global) {
       drawPlayerScore();
       drawPlayerKeys();
     }
+
+    renderEntities();
 
     if(this.currentGameState === GameState.STARTMENU) {
       drawStartMenu();
