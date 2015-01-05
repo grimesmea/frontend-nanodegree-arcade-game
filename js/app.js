@@ -279,6 +279,10 @@ function drawPlayerLife() {
   }
 }
 
+function drawKeysNeeded() {
+  ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
+}
+
 function drawPlayerKeys() {
   for(var i = 1; i <= player.numberOfKeys; i++) {
     ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
