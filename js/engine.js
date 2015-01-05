@@ -190,8 +190,16 @@ var Engine = (function(global) {
   }
 
   function drawStartMenu() {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.fillStyle = 'rgba(255, 150, 99, 0.9)';
     ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+
+    ctx.font = 'bold 36px Verdana';
+    ctx.fillStyle = 'rgb(240, 240, 240)';
+    ctx.textAlign = 'center';
+    ctx.fillText('Megafun Castle Adventure!', canvas.width/2 , 150, canvas.width - 100);
+
+    ctx.strokeStyle = 'rgb(66, 66, 66)';
+    ctx.strokeText('Megafun Castle Adventure!', canvas.width/2 , 150, canvas.width - 100);
   }
 
   /* Go ahead and load all of the images we know we're going to need to
