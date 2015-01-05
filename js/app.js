@@ -281,6 +281,23 @@ function drawPlayerLife() {
 
 function drawKeysNeeded() {
   ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
+  var myImageData = ctx.getImageData(canvas.width - 30, 12, canvas.width, 37);
+  for(var i = 0; i < myImageData.data.length/4; i++) {
+    var r = myImageData.data[i*4];
+    var g = myImageData.data[i*4 + 1];
+    var b = myImageData.data[i*4 + 2];
+    var a = myImageData.data[i*4 + 3];
+
+    var grayValue = (r + g + b) / 3;
+
+    myImageData.data[i*4] = grayValue;
+    myImageData.data[i*4 + 1] = grayValue;
+    myImageData.data[i*4 + 2] = grayValue;
+    myImageData.data[i*4 + 3] = grayValue;
+  }
+
+
+  ctx.putImageData(myImageData, canvas.width - 30, 12);
 }
 
 function drawPlayerKeys() {
