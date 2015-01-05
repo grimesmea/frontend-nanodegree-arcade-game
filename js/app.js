@@ -107,6 +107,10 @@ Player.prototype.handleInput = function(key) {
     if(tempY > 0 && tempY < canvas.height - 100) {
       this.y = tempY;
     }
+  } else {
+    if (key === 'enter') {
+      currentGameState = GameState.Level;
+    }
   }
 };
 
