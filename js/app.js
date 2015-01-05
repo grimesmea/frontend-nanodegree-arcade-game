@@ -227,20 +227,6 @@ gems.push(new Gem(325, 140, GemTypes.ORANGE));
 
 levelKeys.push(new LevelKey(220, 299));
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
-  var allowedKeys = {
-    13: 'enter',
-    37: 'left',
-    38: 'up',
-    39: 'right',
-    40: 'down'
-  };
-
-  player.handleInput(allowedKeys[e.keyCode]);
-});
-
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
@@ -312,3 +298,18 @@ function drawPlayerScore() {
   ctx.textAlign = 'left';
   ctx.fillText('Score: ' + player.score, 5, 32);
 }
+
+
+// This listens for key presses and sends the keys to your
+// Player.handleInput() method. You don't need to modify this.
+document.addEventListener('keyup', function(e) {
+  var allowedKeys = {
+    13: 'enter',
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
+
+  player.handleInput(allowedKeys[e.keyCode]);
+});
