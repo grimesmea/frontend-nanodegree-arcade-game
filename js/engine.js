@@ -156,6 +156,10 @@ var Engine = (function(global) {
 
     renderEntities();
 
+    if(this.currentGameState === GameState.LEVEL) {
+      drawPlayerLife();
+    }
+
     if(this.currentGameState === GameState.STARTMENU) {
       drawStartMenu();
     }
