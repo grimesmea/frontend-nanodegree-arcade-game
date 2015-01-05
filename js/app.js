@@ -232,20 +232,20 @@ function getSpeed(minSpeed, maxSpeed) {
 }
 
 function move(dt) {
-var newX = this.x + this.speedX * dt;
-var newY = this.y + this.speedY * dt;
+  var newX = this.x + this.speedX * dt;
+  var newY = this.y + this.speedY * dt;
 
-if(newX < canvas.width) {
-  this.x += this.speedX * dt;
-} else {
-  this.x = -100;
-}
+  if(newX < canvas.width) {
+    this.x += this.speedX * dt;
+  } else {
+    this.x = -100;
+  }
 
-if(newY < canvas.height + 100) {
-  this.y += this.speedY * dt;
-} else {
-  this.y = this.y;
-}
+  if(newY < canvas.height + 100) {
+    this.y += this.speedY * dt;
+  } else {
+    this.y = this.y;
+  }
 }
 
 function isColliding(collidable) {
