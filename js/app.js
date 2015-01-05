@@ -68,6 +68,8 @@ var Player = function(x, y) {
   originalX = x;
   originalY = y;
 
+  this.width = 75;
+
   this.hitboxX = x + 30;
   this.hitboxY = y + 75;
   this.hitboxWidth = 15;
@@ -267,6 +269,6 @@ function isColliding(collidable) {
 
 function drawPlayerLife() {
   for(var i = 0; i < player.lives; i++) {
-    ctx.drawImage(Resources.get('images/heart-resized.png'), player.x + 18 * i, player.y - 20);
+    ctx.drawImage(Resources.get('images/heart-resized.png'), player.x  + (player.width / 2) + (18 * i) - (8 * player.lives), player.y - 20);
   }
 }
