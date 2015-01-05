@@ -31,7 +31,7 @@ var Engine = (function(global) {
   doc.body.appendChild(canvas);
 
   var GameState = {
-    MENU: 1,
+    STARTMENU: 1,
     LEVEL: 2,
     GAMEOVER: 3,
   };
@@ -148,7 +148,7 @@ var Engine = (function(global) {
 
     renderEntities();
 
-    if(this.currentGameState === GameState.MENU) {
+    if(this.currentGameState === GameState.STARTMENU) {
       drawStartMenu();
     }
 
@@ -185,7 +185,7 @@ var Engine = (function(global) {
    * those sorts of things. It's only called once by the init() method.
    */
   function reset() {
-    this.currentGameState = GameState.MENU;
+    this.currentGameState = GameState.STARTMENU;
   }
 
   function drawStartMenu() {
