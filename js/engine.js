@@ -153,8 +153,7 @@ var Engine = (function(global) {
     }
 
     if(this.currentGameState === GameState.GAMEOVER) {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      drawGameOverMenu();
     }
   }
 
@@ -200,6 +199,16 @@ var Engine = (function(global) {
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
     ctx.strokeText('Megafun Castle Adventure!', canvas.width/2 , 150, canvas.width - 100);
+  }
+
+  function drawGameOverMenu() {
+    ctx.fillStyle = 'rgba(66, 66, 66, 0.9)';
+    ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+
+    ctx.font = 'bold 46px Verdana';
+    ctx.fillStyle = 'rgb(240, 240, 240)';
+    ctx.textAlign = 'center';
+    ctx.fillText('GAME OVER', canvas.width/2 , 150, canvas.width - 100);
   }
 
   /* Go ahead and load all of the images we know we're going to need to
