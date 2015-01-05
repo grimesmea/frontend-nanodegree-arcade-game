@@ -149,12 +149,7 @@ var Engine = (function(global) {
     renderEntities();
 
     if(this.currentGameState === GameState.MENU) {
-
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
-      ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-      ctx.fillRect(0, 100, canvas.width, canvas.height - 170);
+      drawStartMenu();
     }
 
     if(this.currentGameState === GameState.GAMEOVER) {
@@ -192,6 +187,14 @@ var Engine = (function(global) {
    */
   function reset() {
     this.currentGameState = GameState.MENU;
+  }
+
+  function drawStartMenu() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+    ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.fillRect(0, 100, canvas.width, canvas.height - 170);
   }
 
   /* Go ahead and load all of the images we know we're going to need to
