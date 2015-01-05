@@ -65,8 +65,8 @@ Enemy.prototype.update = function(dt) {
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
-  originalX = x;
-  originalY = y;
+  this.originalX = x;
+  this.originalY = y;
 
   this.width = 75;
 
@@ -139,8 +139,8 @@ Player.prototype.checkCollisions = function() {
 };
 
 Player.prototype.reset = function() {
-  this.x = originalX;
-  this.y = originalY;
+  this.x = this.originalX;
+  this.y = this.originalY;
 
   if(currentGameState === GameState.GAMEOVER) {
     player.lives = 3;
