@@ -230,7 +230,8 @@ var Engine = (function(global) {
     'images/gem-green-resized.png',
     'images/gem-blue-resized.png',
     'images/gem-orange-resized.png',
-    'images/key-cropped.png'
+    'images/key-cropped.png',
+    'images/heart-resized.png'
   ]);
   Resources.onReady(init);
 
