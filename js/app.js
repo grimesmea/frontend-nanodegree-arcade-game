@@ -86,7 +86,7 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.handleInput = function(key) {
-  if(currentGameState === GameState.Level) {
+  if(currentGameState === GameState.LEVEL) {
     var tempX = this.x;
     var tempY = this.y;
 
@@ -111,7 +111,7 @@ Player.prototype.handleInput = function(key) {
     }
   } else {
     if (key === 'enter') {
-      currentGameState = GameState.Level;
+      currentGameState = GameState.LEVEL;
     }
   }
 };
