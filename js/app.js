@@ -141,6 +141,12 @@ Player.prototype.checkCollisions = function() {
 Player.prototype.reset = function() {
   this.x = originalX;
   this.y = originalY;
+
+  if(currentGameState === GameState.GAMEOVER) {
+    player.lives = 3;
+    player.score = 0;
+    player.numberOfKeys = 0;
+  }
 };
 
 Player.prototype.update = function(dt) {
