@@ -24,7 +24,8 @@ var Engine = (function(global) {
       canvas = doc.createElement('canvas'),
       ctx = canvas.getContext('2d'),
       lastTime,
-      currentGameState;
+      currentGameState,
+      level;
 
   canvas.width = 505;
   canvas.height = 606;
@@ -97,7 +98,7 @@ var Engine = (function(global) {
    * render methods.
    */
   function updateEntities(dt) {
-    if(this.currentGameState != GameState.GAMEOVER) {
+    if(this.currentGameState === GameState.LEVEL) {
       enemies.forEach(function(enemy) {
         enemy.update(dt);
       });
@@ -197,6 +198,10 @@ var Engine = (function(global) {
    * those sorts of things. It's only called once by the init() method.
    */
   function reset() {
+    this.player = new Player(215, 430);
+
+    resetLevel();
+
     this.currentGameState = GameState.STARTMENU;
   }
 

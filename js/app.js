@@ -210,23 +210,6 @@ LevelKey.prototype.onCollision = function() {
   levelKeys.splice(levelKeys.indexOf(this), 1);
 };
 
-var player = new Player(215, 430);
-var enemies = [];
-var gems = [];
-var levelKeys = [];
-
-enemies.push(new Enemy(-100, 299));
-enemies.push(new Enemy(-100, 299));
-enemies.push(new Enemy(-100, 133));
-enemies.push(new Enemy(-100, 216));
-enemies.push(new Enemy(-100, 133));
-
-gems.push(new Gem(220, 225, GemTypes.GREEN));
-gems.push(new Gem(120, 310, GemTypes.BLUE));
-gems.push(new Gem(325, 140, GemTypes.ORANGE));
-
-levelKeys.push(new LevelKey(220, 299));
-
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
@@ -299,6 +282,28 @@ function drawPlayerScore() {
   ctx.fillText('Score: ' + player.score, 5, 32);
 }
 
+
+var enemies, gems, levelKeys;
+
+function resetLevel() {
+  player.reset();
+
+  enemies = [];
+  gems = [];
+  levelKeys =[];
+
+  enemies.push(new Enemy(-40, 299));
+  enemies.push(new Enemy(-180, 133));
+  enemies.push(new Enemy(-120, 216));
+  enemies.push(new Enemy(-160, 133));
+
+  gems.push(new Gem(220, 225, GemTypes.GREEN));
+  gems.push(new Gem(420, 310, GemTypes.GREEN));
+  gems.push(new Gem(120, 310, GemTypes.BLUE));
+  gems.push(new Gem(20, 140, GemTypes.ORANGE));
+
+  levelKeys.push(new LevelKey(220, 299));
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
