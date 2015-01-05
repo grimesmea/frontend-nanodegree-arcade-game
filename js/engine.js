@@ -148,6 +148,8 @@ var Engine = (function(global) {
 
     renderEntities();
 
+    drawPlayerLife();
+
     if(this.currentGameState === GameState.STARTMENU) {
       drawStartMenu();
     }

@@ -266,7 +266,7 @@ function isColliding(collidable) {
 }
 
 function drawPlayerLife() {
-  for(var i = 0; i <= player.lives; i++) {
-    ctx.drawImage(Resources.get(images/heart-resized.png), 65 * i, 0);
+  for(var i = 0; i < player.lives; i++) {
+    ctx.drawImage(Resources.get('images/heart-resized.png'), 65 * i, 0);
   }
 }
