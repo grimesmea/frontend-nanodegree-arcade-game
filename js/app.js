@@ -279,6 +279,12 @@ function drawPlayerLife() {
   }
 }
 
+function drawPlayerKeys() {
+  for(var i = 1; i <= player.numberOfKeys; i++) {
+    ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
+  }
+}
+
 function drawPlayerScore() {
   ctx.fillStyle = 'rgb(66, 66, 66)';
   ctx.font = 'bold 20px Verdana';
