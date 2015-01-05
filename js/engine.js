@@ -150,6 +150,7 @@ var Engine = (function(global) {
 
     if(this.currentGameState === GameState.LEVEL) {
       drawPlayerLife();
+      drawPlayerScore();
     }
 
     if(this.currentGameState === GameState.STARTMENU) {

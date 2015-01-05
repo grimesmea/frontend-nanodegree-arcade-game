@@ -278,3 +278,10 @@ function drawPlayerLife() {
     ctx.drawImage(Resources.get('images/heart-resized.png'), player.x  + (player.width / 2) + (15 * i) - (6 * player.lives), player.y - 20);
   }
 }
+
+function drawPlayerScore() {
+  ctx.fillStyle = 'rgb(66, 66, 66)';
+  ctx.font = 'bold 20px Verdana';
+  ctx.textAlign = 'left';
+  ctx.fillText('Score: ' + player.score, 5, 32);
+}
