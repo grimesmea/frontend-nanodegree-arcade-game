@@ -219,6 +219,7 @@ levelKeys.push(new LevelKey(220, 299));
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
+    13: 'enter',
     37: 'left',
     38: 'up',
     39: 'right',
