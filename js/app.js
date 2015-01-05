@@ -286,7 +286,7 @@ function drawPlayerKeys() {
 }
 
 function drawPlayerScore() {
-  ctx.fillStyle = 'rgb(66, 66, 66)';
+  ctx.fillStyle = 'rgba(66, 66, 66, 0.8)';
   ctx.font = 'bold 20px Verdana';
   ctx.textAlign = 'left';
   ctx.fillText('Score: ' + player.score, 5, 32);
