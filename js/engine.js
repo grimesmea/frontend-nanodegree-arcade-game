@@ -205,6 +205,26 @@ var Engine = (function(global) {
     this.currentGameState = GameState.STARTMENU;
   }
 
+  function resetLevel() {
+    player.reset();
+
+    enemies = [];
+    gems = [];
+    levelKeys =[];
+
+    enemies.push(new Enemy(-40, 299));
+    enemies.push(new Enemy(-180, 133));
+    enemies.push(new Enemy(-120, 216));
+    enemies.push(new Enemy(-160, 133));
+
+    gems.push(new Gem(220, 225, GemTypes.GREEN));
+    gems.push(new Gem(420, 310, GemTypes.GREEN));
+    gems.push(new Gem(120, 310, GemTypes.BLUE));
+    gems.push(new Gem(20, 140, GemTypes.ORANGE));
+
+    levelKeys.push(new LevelKey(220, 299));
+  }
+
   function drawStartMenu() {
     ctx.fillStyle = 'rgba(255, 150, 99, 0.9)';
     ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
