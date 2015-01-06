@@ -243,12 +243,12 @@ function isColliding(collidable) {
 }
 
 function generateGemCoords() {
-  var x = Math.round(Math.random() * 10 / 2) * 100 + 20;
+  var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
   var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
 
   for(var i = 0; i < gems.length ; i++) {
     if(gems[i].x === x && gems[i].y === y) {
-      x = Math.round(Math.random() * 10 / 2) * 100 + 20;
+      x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
       y = Math.round(Math.random() * 10 / 5) * 85 + 140;
 
       i = -1;
