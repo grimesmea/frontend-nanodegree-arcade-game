@@ -23,22 +23,11 @@ var Engine = (function(global) {
       win = global.window,
       canvas = doc.createElement('canvas'),
       ctx = canvas.getContext('2d'),
-      lastTime,
-      currentGameState,
-      level,
-      enemies = [],
-      gems = [],
-      levelKeys = [];
+      lastTime;
 
   canvas.width = 505;
   canvas.height = 606;
   doc.body.appendChild(canvas);
-
-  var GameState = {
-    STARTMENU: 1,
-    LEVEL: 2,
-    GAMEOVER: 3,
-  };
 
   /* This function serves as the kickoff point for the game loop itself
    * and handles properly calling the update and render methods.
@@ -101,7 +90,7 @@ var Engine = (function(global) {
    * render methods.
    */
   function updateEntities(dt) {
-    if(this.currentGameState === GameState.LEVEL) {
+    if(currentGameState === GameState.LEVEL) {
       enemies.forEach(function(enemy) {
         enemy.update(dt);
       });
@@ -150,7 +139,7 @@ var Engine = (function(global) {
       }
     }
 
-    if(this.currentGameState === GameState.LEVEL) {
+    if(currentGameState === GameState.LEVEL) {
       drawKeysNeeded();
 
       drawPlayerLife();
@@ -160,15 +149,15 @@ var Engine = (function(global) {
 
     renderEntities();
 
-    if(this.currentGameState === GameState.LEVEL) {
+    if(currentGameState === GameState.LEVEL) {
       drawPlayerLife();
     }
 
-    if(this.currentGameState === GameState.STARTMENU) {
+    if(currentGameState === GameState.STARTMENU) {
       drawStartMenu();
     }
 
-    if(this.currentGameState === GameState.GAMEOVER) {
+    if(currentGameState === GameState.GAMEOVER) {
       drawGameOverMenu();
     }
   }
@@ -282,9 +271,5 @@ var Engine = (function(global) {
    */
   global.ctx = ctx;
   global.canvas = canvas;
-  global.GameState = GameState;
-  global.currentGameState = currentGameState;
-  global.enemies = enemies;
-  global.gems = gems;
-  global.levelKeys = levelKeys;
+
 })(this);

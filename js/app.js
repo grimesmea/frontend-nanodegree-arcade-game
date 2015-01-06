@@ -1,3 +1,15 @@
+var currentGameState,
+    level,
+    enemies = [],
+    gems = [],
+    levelKeys = [];
+
+var GameState = {
+  STARTMENU: 1,
+  LEVEL: 2,
+  GAMEOVER: 3,
+};
+
 var Entity = function(x, y) {
   this.x = x;
   this.y = y;
@@ -214,6 +226,22 @@ function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
 
+function generateGemCoords() {
+  var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
+  var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+
+  for(var i = 0; i < gems.length ; i++) {
+    if(gems[i].x === x && gems[i].y === y) {
+      x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
+      y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+
+      i = -1;
+    }
+  }
+
+  return [x, y];
+}
+
 function move(dt) {
   var newX = this.x + this.speedX * dt;
   var newY = this.y + this.speedY * dt;
@@ -240,22 +268,6 @@ function isColliding(collidable) {
   } else {
     return true;
   }
-}
-
-function generateGemCoords() {
-  var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
-  var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
-
-  for(var i = 0; i < gems.length ; i++) {
-    if(gems[i].x === x && gems[i].y === y) {
-      x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
-      y = Math.round(Math.random() * 10 / 5) * 85 + 140;
-
-      i = -1;
-    }
-  }
-
-  return [x, y];
 }
 
 function drawPlayerLife() {
