@@ -221,6 +221,7 @@ var Engine = (function(global) {
     gems.push(new Gem(Math.round(Math.random() * 10 / 2) * 100 + 20, Math.round(Math.random() * 10 / 5) * 85 + 140, GemTypes.BLUE));
     gems.push(new Gem(Math.round(Math.random() * 10 / 2) * 100 + 20, Math.round(Math.random() * 10 / 5) * 85 + 140, GemTypes.ORANGE));
 
+
     levelKeys.push(new LevelKey(220, 299));
   }
 

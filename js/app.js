@@ -242,6 +242,22 @@ function isColliding(collidable) {
   }
 }
 
+function generateGemCoords() {
+  var x = Math.round(Math.random() * 10 / 2) * 100 + 20;
+  var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+
+  for(var i = 0; i < gems.length ; i++) {
+    if(gems[i].x === x && gems[i].y === y) {
+      x = Math.round(Math.random() * 10 / 2) * 100 + 20;
+      y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+
+      i = -1;
+    }
+  }
+
+  return [x, y];
+}
+
 function drawPlayerLife() {
   for(var i = 0; i < player.lives; i++) {
     ctx.drawImage(Resources.get('images/heart-resized.png'), player.x  + (player.width / 2) + (15 * i) - (6 * player.lives), player.y - 15);
