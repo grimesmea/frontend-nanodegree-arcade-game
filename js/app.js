@@ -64,6 +64,7 @@ Enemy.prototype.onCollision = function() {
 
   if(player.lives === 0) {
     currentGameState = GameState.GAMEOVER;
+    resetLevel();
   }
   player.reset();
 };
@@ -270,44 +271,36 @@ function isColliding(collidable) {
   }
 }
 
-function drawPlayerLife() {
-  for(var i = 0; i < player.lives; i++) {
-    ctx.drawImage(Resources.get('images/heart-resized.png'), player.x  + (player.width / 2) + (15 * i) - (6 * player.lives), player.y - 15);
-  }
+/* This function does nothing but it could have been a good place to
+ * handle game reset states - maybe a new game menu or a game over screen
+ * those sorts of things. It's only called once by the init() method.
+ */
+function reset() {
+  this.player = new Player(215, 430);
+
+  resetLevel();
+
+  this.currentGameState = GameState.STARTMENU;
 }
 
-function drawKeysNeeded() {
-  ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
-  var myImageData = ctx.getImageData(canvas.width - 30, 12, canvas.width, 37);
+function resetLevel() {
+  player.reset();
 
-  for(var i = 0; i < myImageData.data.length/4; i++) {
-    var r = myImageData.data[i*4];
-    var g = myImageData.data[i*4 + 1];
-    var b = myImageData.data[i*4 + 2];
-    var a = myImageData.data[i*4 + 3];
+  enemies = [];
+  gems = [];
+  levelKeys =[];
 
-    var grayValue = (r + g + b) / 3;
+  enemies.push(new Enemy(-40, 299));
+  enemies.push(new Enemy(-40, 133));
+  enemies.push(new Enemy(-180, 216));
+  enemies.push(new Enemy(-120, 133));
 
-    myImageData.data[i*4] = grayValue;
-    myImageData.data[i*4 + 1] = grayValue;
-    myImageData.data[i*4 + 2] = grayValue;
-    myImageData.data[i*4 + 3] = grayValue;
+  for(var gemType in GemTypes) {
+    var gemCoords = generateGemCoords();
+    gems.push(new Gem(gemCoords[0], gemCoords[1], GemTypes[gemType]));
   }
 
-  ctx.putImageData(myImageData, canvas.width - 30, 12);
-}
-
-function drawPlayerKeys() {
-  for(var i = 1; i <= player.numberOfKeys; i++) {
-    ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
-  }
-}
-
-function drawPlayerScore() {
-  ctx.fillStyle = 'rgba(66, 66, 66, 0.8)';
-  ctx.font = 'bold 20px Verdana';
-  ctx.textAlign = 'left';
-  ctx.fillText('Score: ' + player.score, 5, 32);
+  levelKeys.push(new LevelKey(220, 299));
 }
 
 // This listens for key presses and sends the keys to your
