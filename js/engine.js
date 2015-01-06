@@ -25,7 +25,10 @@ var Engine = (function(global) {
       ctx = canvas.getContext('2d'),
       lastTime,
       currentGameState,
-      level;
+      level,
+      enemies = [],
+      gems = [],
+      levelKeys = [];
 
   canvas.width = 505;
   canvas.height = 606;
@@ -281,4 +284,7 @@ var Engine = (function(global) {
   global.canvas = canvas;
   global.GameState = GameState;
   global.currentGameState = currentGameState;
+  global.enemies = enemies;
+  global.gems = gems;
+  global.levelKeys = levelKeys;
 })(this);

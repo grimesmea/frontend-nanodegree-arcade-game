@@ -298,9 +298,6 @@ function drawPlayerScore() {
   ctx.fillText('Score: ' + player.score, 5, 32);
 }
 
-
-var enemies, gems, levelKeys;
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -312,5 +309,7 @@ document.addEventListener('keyup', function(e) {
     40: 'down'
   };
 
-  player.handleInput(allowedKeys[e.keyCode]);
+  if(typeof player !== 'undefined') {
+    player.handleInput(allowedKeys[e.keyCode]);
+  }
 });
