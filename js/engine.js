@@ -217,10 +217,10 @@ var Engine = (function(global) {
     enemies.push(new Enemy(-180, 216));
     enemies.push(new Enemy(-120, 133));
 
-    gems.push(new Gem(Math.round(Math.random() * 10 / 2) * 100 + 20, Math.round(Math.random() * 10 / 5) * 85 + 140, GemTypes.GREEN));
-    gems.push(new Gem(Math.round(Math.random() * 10 / 2) * 100 + 20, Math.round(Math.random() * 10 / 5) * 85 + 140, GemTypes.BLUE));
-    gems.push(new Gem(Math.round(Math.random() * 10 / 2) * 100 + 20, Math.round(Math.random() * 10 / 5) * 85 + 140, GemTypes.ORANGE));
-
+    for(var gemType in GemTypes) {
+      var gemCoords = generateGemCoords();
+      gems.push(new Gem(gemCoords[0], gemCoords[1], GemTypes[gemType]));
+    }
 
     levelKeys.push(new LevelKey(220, 299));
   }
