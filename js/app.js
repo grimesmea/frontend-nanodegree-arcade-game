@@ -313,6 +313,7 @@ function reset() {
 
 function resetLevel() {
   player.reset();
+  player.hasKey = false;
 
   enemies = [];
   gems = [];
