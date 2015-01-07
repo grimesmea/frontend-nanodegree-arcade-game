@@ -139,7 +139,7 @@ var Engine = (function(global) {
       }
     }
 
-    ctx.drawImage(Resources.get('images/portcullis.png'), 0, 6);
+    ctx.drawImage(Resources.get('images/portcullis.png'), 0, 7);
 
     if(currentGameState === GameState.LEVEL) {
       drawKeysNeeded();
@@ -224,7 +224,7 @@ var Engine = (function(global) {
 
   function drawKeysNeeded() {
     ctx.drawImage(Resources.get('images/key-hud-icon.png'), canvas.width - 30, 12);
-    var myImageData = ctx.getImageData(canvas.width - 30, 12, canvas.width, 37);
+    var myImageData = ctx.getImageData(canvas.width - 30, 12, canvas.width, 33);
 
     for(var i = 0; i < myImageData.data.length/4; i++) {
       var r = myImageData.data[i*4];
