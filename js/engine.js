@@ -139,7 +139,11 @@ var Engine = (function(global) {
       }
     }
 
-    ctx.drawImage(Resources.get('images/portcullis.png'), 0, 7);
+    ctx.drawImage(Resources.get('images/portcullis-frame.png'), 0, 8);
+
+    if(!player.hasKey) {
+      ctx.drawImage(Resources.get('images/portcullis-gate.png'), 0, 8);
+    }
 
     if(currentGameState === GameState.LEVEL) {
       drawKeysNeeded();
@@ -273,7 +277,8 @@ var Engine = (function(global) {
     'images/key-cropped.png',
     'images/key-hud-icon.png',
     'images/heart-resized.png',
-    'images/portcullis.png'
+    'images/portcullis-frame.png',
+    'images/portcullis-gate.png'
   ]);
   Resources.onReady(init);
 
