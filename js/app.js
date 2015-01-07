@@ -32,8 +32,8 @@ Entity.prototype.render = function() {
 var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
-  var maxSpeed = 200;
-  var minSpeed = 100;
+  this.maxSpeed = 180 + (level * 10);
+  this.minSpeed = 80 + (level * 10);
 
   this.hitboxX = this.x;
   this.hitboxY = this.y + 10;
@@ -42,7 +42,7 @@ var Enemy = function(x, y) {
 
   this.sprite = 'images/enemy-bug-cropped.png';
 
-  this.speedX = getSpeed(maxSpeed, minSpeed);
+  this.speedX = getSpeed(this.maxSpeed, this.minSpeed);
   this.speedY = 0;
 };
 
@@ -72,6 +72,7 @@ Enemy.prototype.onCollision = function() {
   if(player.lives === 0) {
     currentGameState = GameState.GAMEOVER;
     resetLevel();
+    level = 1;
   }
   player.reset();
 };
@@ -305,6 +306,8 @@ function isColliding(collidable) {
  */
 function reset() {
   this.player = new Player(215, 430);
+
+  level = 1;
 
   resetLevel();
 
