@@ -156,9 +156,6 @@ var Engine = (function(global) {
     if(currentGameState === GameState.STARTMENU) {
       drawStartMenu();
     }
-    if(currentGameState === GameState.LEVEL) {
-      drawPlayerLife();
-    }
     if(currentGameState === GameState.LEVELTRANSITION) {
       drawLevelTransitionScreen();
     }
@@ -192,7 +189,7 @@ var Engine = (function(global) {
 
   function drawStartMenu() {
     ctx.fillStyle = 'rgba(255, 150, 99, 0.9)';
-    ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+    ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
     ctx.font = 'bold 36px Verdana';
     ctx.fillStyle = 'rgb(240, 240, 240)';
@@ -211,7 +208,7 @@ var Engine = (function(global) {
 
   function drawLevelTransitionScreen() {
     ctx.fillStyle = 'rgba(94, 7, 245, 0.9)';
-    ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+    ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
     var textLine1 = 'You just finished another night at your apprenticeship!';
     var textLine2 = 'Prepare for your return from night ' + level + ' of your quest to become a cobbler!';
@@ -225,7 +222,7 @@ var Engine = (function(global) {
 
   function drawGameOverMenu() {
     ctx.fillStyle = 'rgba(66, 66, 66, 0.9)';
-    ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+    ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
     ctx.font = 'bold 46px Verdana';
     ctx.fillStyle = 'rgb(240, 240, 240)';
