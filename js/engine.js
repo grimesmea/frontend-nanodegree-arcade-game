@@ -111,10 +111,10 @@ var Engine = (function(global) {
      * for that particular row of the game level.
      */
     var rowImages = [
-      'images/water-block.png',   // Top row is water
-      'images/stone-block.png',   // Row 1 of 3 of stone
-      'images/stone-block.png',   // Row 2 of 3 of stone
-      'images/stone-block.png',   // Row 3 of 3 of stone
+      'images/stone-block.png',   // Row 1 of 4 of stone
+      'images/stone-block.png',   // Row 2 of 4 of stone
+      'images/stone-block.png',   // Row 3 of 4 of stone
+      'images/stone-block.png',   // Row 4 of 4 of stone
       'images/grass-block.png',   // Row 1 of 2 of grass
       'images/grass-block.png'    // Row 2 of 2 of grass
     ],
@@ -138,6 +138,8 @@ var Engine = (function(global) {
         ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
       }
     }
+
+    ctx.drawImage(Resources.get('images/portcullis.png'), 0, 6);
 
     if(currentGameState === GameState.LEVEL) {
       drawKeysNeeded();
@@ -270,7 +272,8 @@ var Engine = (function(global) {
     'images/gem-orange-resized.png',
     'images/key-cropped.png',
     'images/key-hud-icon.png',
-    'images/heart-resized.png'
+    'images/heart-resized.png',
+    'images/portcullis.png'
   ]);
   Resources.onReady(init);
 
