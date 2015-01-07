@@ -155,6 +155,9 @@ Player.prototype.reset = function() {
   this.x = this.originalX;
   this.y = this.originalY;
 
+  this.hitboxX = this.x + 30;
+  this.hitboxY = this.y + 75;
+
   if(currentGameState === GameState.GAMEOVER) {
     player.lives = 3;
     player.score = 0;
@@ -228,17 +231,17 @@ function getSpeed(minSpeed, maxSpeed) {
 }
 
 function generateGemCoords() {
-  var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
-  var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+   var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
+   var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
 
-  for(var i = 0; i < gems.length ; i++) {
-    if(gems[i].x === x && gems[i].y === y) {
-      x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
-      y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+   for(var i = 0; i < gems.length ; i++) {
+     if(gems[i].x === x && gems[i].y === y) {
+       x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
+       y = Math.round(Math.random() * 10 / 5) * 85 + 140;
 
-      i = -1;
-    }
-  }
+       i = -1;
+     }
+   }
 
   return [x, y];
 }
