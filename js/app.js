@@ -243,6 +243,22 @@ function generateGemCoords() {
   return [x, y];
 }
 
+function generateKeyCoords() {
+  var x = Math.round(Math.random() * 10 / 2.5) * 100 + 35;
+  var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+
+  for(var i = 0; i < gems.length ; i++) {
+    if(gems[i].x + 15 === x && gems[i].y === y) {
+      x = Math.round(Math.random() * 10 / 2.5) * 100 + 35;
+      y = Math.round(Math.random() * 10 / 5) * 85 + 140;
+
+      i = -1;
+    }
+  }
+
+  return [x, y];
+}
+
 function move(dt) {
   var newX = this.x + this.speedX * dt;
   var newY = this.y + this.speedY * dt;
@@ -300,7 +316,8 @@ function resetLevel() {
     gems.push(new Gem(gemCoords[0], gemCoords[1], GemTypes[gemType]));
   }
 
-  levelKeys.push(new LevelKey(220, 299));
+  var keyCoords = generateKeyCoords();
+  levelKeys.push(new LevelKey(keyCoords[0], keyCoords[1]));
 }
 
 // This listens for key presses and sends the keys to your
