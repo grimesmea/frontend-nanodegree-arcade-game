@@ -10,6 +10,13 @@ var GameState = {
   GAMEOVER: 3,
 };
 
+
+var GemTypes = {
+  GREEN: 100,
+  BLUE: 250,
+  ORANGE: 550,
+};
+
 var Entity = function(x, y) {
   this.x = x;
   this.y = y;
@@ -173,12 +180,6 @@ Player.prototype.update = function(dt) {
   this.hitboxY = this.y + 75;
 
   this.checkCollisions();
-};
-
-var GemTypes = {
-  GREEN: 100,
-  BLUE: 250,
-  ORANGE: 550,
 };
 
 var Gem = function(x, y, gemType) {
