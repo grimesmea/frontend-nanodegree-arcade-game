@@ -123,16 +123,17 @@ Player.prototype.handleInput = function(key) {
       tempY += 83;
     }
 
+
     if(tempX > 0 && tempX < canvas.width - 75) {
       this.x = tempX;
     }
-    if(tempY > 0 && tempY < canvas.height - 100) {
+    if(!player.hasKey && tempY > 40 && tempY < canvas.height - 100) {
+      this.y = tempY;
+    } else if(player.hasKey && tempY > 0 && tempY < canvas.height - 100) {
       this.y = tempY;
     }
-  } else {
-    if (key === 'enter') {
-      currentGameState = GameState.LEVEL;
-    }
+  } else if (key === 'enter') {
+    currentGameState = GameState.LEVEL;
   }
 };
 
