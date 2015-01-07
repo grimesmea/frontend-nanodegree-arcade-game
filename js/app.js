@@ -7,7 +7,8 @@ var currentGameState,
 var GameState = {
   STARTMENU: 1,
   LEVEL: 2,
-  GAMEOVER: 3,
+  LEVELTRANSITION: 3,
+  GAMEOVER: 4
 };
 
 
@@ -103,7 +104,6 @@ var Player = function(x, y) {
   this.lives = 3;
   this.score = 0;
   this.hasKey = false;
-  this.hasBeatLevel = false;
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -340,7 +340,7 @@ function resetLevel() {
 
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    player.hasBeatLevel = true;
+    currentGameState = GameState.LEVELTRANSITION;
   }
 }
 

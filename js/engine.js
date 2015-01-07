@@ -80,12 +80,6 @@ var Engine = (function(global) {
    */
   function update(dt) {
     updateEntities(dt);
-
-    if(player.hasBeatLevel) {
-      level++;
-      resetLevel();
-      player.hasBeatLevel = false;
-    }
   }
 
   /* This is called by the update function  and loops through all of the
@@ -159,14 +153,15 @@ var Engine = (function(global) {
 
     renderEntities();
 
-    if(currentGameState === GameState.LEVEL) {
-      drawPlayerLife();
-    }
-
     if(currentGameState === GameState.STARTMENU) {
       drawStartMenu();
     }
-
+    if(currentGameState === GameState.LEVEL) {
+      drawPlayerLife();
+    }
+    if(currentGameState === GameState.LEVELTRANSITION) {
+      drawLevelTransitionScreen();
+    }
     if(currentGameState === GameState.GAMEOVER) {
       drawGameOverMenu();
     }
@@ -212,6 +207,20 @@ var Engine = (function(global) {
     ctx.font = 'normal 16px Verdana';
     ctx.fillStyle = 'rgb(66, 66, 66)';
     ctx.fillText('Help the princess sneak back into the castle!', canvas.width/2 , 200, canvas.width - 100);
+  }
+
+  function drawLevelTransitionScreen() {
+    ctx.fillStyle = 'rgba(94, 7, 245, 0.9)';
+    ctx.fillRect(0, 50, canvas.width, canvas.height - 70);
+
+    var textLine1 = 'You just finished another night at your apprenticeship!';
+    var textLine2 = 'Prepare for your return from night ' + level + ' of your quest to become a cobbler!';
+
+    ctx.font = 'normal 16px Verdana';
+    ctx.fillStyle = 'rgb(66, 66, 66)';
+    ctx.textAlign = 'center';
+    ctx.fillText(textLine1, canvas.width/2 , 200, canvas.width - 100);
+    ctx.fillText(textLine2, canvas.width/2 , 250, canvas.width - 100);
   }
 
   function drawGameOverMenu() {
