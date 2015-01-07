@@ -100,6 +100,7 @@ var Player = function(x, y) {
   this.lives = 3;
   this.score = 0;
   this.hasKey = false;
+  this.hasBeatLevel = false;
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -183,6 +184,7 @@ Player.prototype.update = function(dt) {
   this.hitboxY = this.y + 75;
 
   this.checkCollisions();
+  checkWinConditions();
 };
 
 var Gem = function(x, y, gemType) {
@@ -328,6 +330,12 @@ function resetLevel() {
 
   var keyCoords = generateKeyCoords();
   levelKeys.push(new LevelKey(keyCoords[0], keyCoords[1]));
+}
+
+function checkWinConditions() {
+  if(player.hasKey && player.y < 40) {
+    player.hasBeatLevel = true;
+  }
 }
 
 // This listens for key presses and sends the keys to your
