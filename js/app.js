@@ -92,7 +92,7 @@ var Player = function(x, y) {
 
   this.lives = 3;
   this.score = 0;
-  this.numberOfKeys = 0;
+  this.hasKey = false;
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -143,9 +143,12 @@ Player.prototype.checkCollisions = function() {
     }
   }
 
+  /* Future versions of the game may include more than one key per level, thus
+   * the for loop is left intact despite there only ever being one key per level in this
+   * verion.
+   */
   for(var k = 0; k < levelKeys.length; k++){
     if(isColliding(levelKeys[k]) === true) {
-      console.log('hi');
       levelKeys[k].onCollision();
     }
   }
@@ -161,7 +164,7 @@ Player.prototype.reset = function() {
   if(currentGameState === GameState.GAMEOVER) {
     player.lives = 3;
     player.score = 0;
-    player.numberOfKeys = 0;
+    player.hasKey = false;
   }
 };
 
@@ -222,7 +225,7 @@ LevelKey.prototype = Object.create(Entity.prototype);
 LevelKey.prototype.constructor = LevelKey;
 
 LevelKey.prototype.onCollision = function() {
-  player.numberOfKeys++;
+  player.hasKey = true;
   levelKeys.splice(levelKeys.indexOf(this), 1);
 };
 
