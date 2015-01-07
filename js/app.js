@@ -78,9 +78,11 @@ Enemy.prototype.onCollision = function() {
 };
 
 Enemy.prototype.update = function(dt) {
-  this.move(dt);
-  this.hitboxX = this.x;
-  this.hitboxY = this.y + 10;
+  if(currentGameState === GameState.LEVEL) {
+    this.move(dt);
+    this.hitboxX = this.x;
+    this.hitboxY = this.y + 10;
+  }
 };
 
 var Player = function(x, y) {

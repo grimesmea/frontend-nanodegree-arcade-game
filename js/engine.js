@@ -96,12 +96,10 @@ var Engine = (function(global) {
    * render methods.
    */
   function updateEntities(dt) {
-    if(currentGameState === GameState.LEVEL) {
-      enemies.forEach(function(enemy) {
-        enemy.update(dt);
-      });
-      player.update(dt);
-    }
+    enemies.forEach(function(enemy) {
+      enemy.update(dt);
+    });
+    player.update(dt);
   }
 
   /* This function initially draws the "game level", it will then call
