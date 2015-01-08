@@ -341,7 +341,7 @@ function resetLevel() {
 
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    if(level == 10) {
+    if(level === 14) {
       currentGameState = GameState.GAMEWON;
     } else {
       currentGameState = GameState.LEVELTRANSITION;
