@@ -188,36 +188,46 @@ var Engine = (function(global) {
   }
 
   function drawStartMenu() {
-    ctx.fillStyle = 'rgba(255, 150, 99, 0.9)';
+    ctx.fillStyle = 'rgba(195, 35, 57, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 36px Verdana';
+    ctx.font = 'bold 40px Verdana';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
-    ctx.fillText('Megafun Castle Adventure!', canvas.width/2 , 150, canvas.width - 100);
+    ctx.fillText('Megafun Castle Adventure:', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
-    ctx.strokeText('Megafun Castle Adventure!', canvas.width/2 , 150, canvas.width - 100);
+    ctx.lineWidth = 3;
+    ctx.strokeText('Megafun Castle Adventure:', canvas.width/2 , 150, canvas.width - 100);
 
-    ctx.fillText('Press "ENTER" to start!', canvas.width/2 , 400, canvas.width - 100);
+    ctx.font = 'bold 32px Verdana';
+    ctx.fillText('Press "ENTER" to being your quest!', canvas.width/2 , 475, canvas.width - 100);
 
     ctx.font = 'normal 16px Verdana';
-    ctx.fillStyle = 'rgb(66, 66, 66)';
-    ctx.fillText('Help the princess sneak back into the castle!', canvas.width/2 , 200, canvas.width - 100);
+    ctx.fillText('A quest to help a young princess find her place in the world', canvas.width/2 , 200, canvas.width - 100);
+
+    ctx.font = 'normal 12px Verdana';
+    ctx.fillStyle = 'rgb(22, 22, 22)';
+    ctx.fillText('Despite the protests of her father, princess Celia wants', canvas.width/2 , 240, canvas.width - 100);
+    ctx.fillText('nothing more than to become a fletcher. Help her sneak back into', canvas.width/2 , 255, canvas.width - 100);
+    ctx.fillText('the castle after her secret fletching lessons.', canvas.width/2 , 270, canvas.width - 100);
   }
 
   function drawLevelTransitionScreen() {
-    ctx.fillStyle = 'rgba(94, 7, 245, 0.9)';
+    ctx.fillStyle = 'rgba(94, 7, 245, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    var textLine1 = 'You just finished another night at your apprenticeship!';
-    var textLine2 = 'Prepare for your return from night ' + level + ' of your quest to become a cobbler!';
-
-    ctx.font = 'normal 16px Verdana';
-    ctx.fillStyle = 'rgb(66, 66, 66)';
+    ctx.font = 'bold 44px Verdana';
+    ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
-    ctx.fillText(textLine1, canvas.width/2 , 200, canvas.width - 100);
-    ctx.fillText(textLine2, canvas.width/2 , 250, canvas.width - 100);
+    ctx.fillText('Level Up!', canvas.width/2 , 250, canvas.width - 100);
+
+    ctx.strokeStyle = 'rgb(66, 66, 66)';
+    ctx.lineWidth = 3;
+    ctx.strokeText('Level Up!', canvas.width/2 , 250, canvas.width - 100);
+
+    ctx.font = 'bold 32px Verdana';
+    ctx.fillText('Press "ENTER" to continue on your quest!', canvas.width/2 , 400, canvas.width - 100);
   }
 
   function drawGameOverMenu() {
@@ -228,6 +238,12 @@ var Engine = (function(global) {
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
     ctx.fillText('GAME OVER', canvas.width/2 , 150, canvas.width - 100);
+
+    ctx.font = 'normal 16px Verdana';
+    ctx.fillText('You were caught and have been grounded for a fortnight.', canvas.width/2 , 300, canvas.width - 100);
+
+    ctx.font = 'bold 32px Verdana';
+    ctx.fillText('Press "ENTER" to try again!', canvas.width/2 , 475, canvas.width - 100);
   }
 
   function drawPlayerLife() {
