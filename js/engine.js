@@ -159,6 +159,9 @@ var Engine = (function(global) {
     if(currentGameState === GameState.LEVELTRANSITION) {
       drawLevelTransitionScreen();
     }
+    if(currentGameState === GameState.GAMEWON) {
+      drawWinScreen();
+    }
     if(currentGameState === GameState.GAMEOVER) {
       drawGameOverMenu();
     }
@@ -228,6 +231,23 @@ var Engine = (function(global) {
 
     ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to continue on your quest!', canvas.width/2 , 400, canvas.width - 100);
+  }
+
+  function drawWinScreen() {
+    ctx.fillStyle = 'rgba(153, 204, 255, 0.95)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
+
+    ctx.font = 'bold 44px Lucida Console';
+    ctx.fillStyle = 'rgb(240, 240, 240)';
+    ctx.textAlign = 'center';
+    ctx.fillText('You won!', canvas.width/2 , 250, canvas.width - 100);
+
+    ctx.strokeStyle = 'rgb(66, 66, 66)';
+    ctx.lineWidth = 3;
+    ctx.strokeText('You won!', canvas.width/2 , 250, canvas.width - 100);
+
+    ctx.font = 'bold 24px Lucida Console';
+    ctx.fillText('Press "ENTER" to restart the game!', canvas.width/2 , 400, canvas.width - 100);
   }
 
   function drawGameOverMenu() {

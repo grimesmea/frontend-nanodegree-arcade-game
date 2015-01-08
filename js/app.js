@@ -8,7 +8,8 @@ var GameState = {
   STARTMENU: 1,
   LEVEL: 2,
   LEVELTRANSITION: 3,
-  GAMEOVER: 4
+  GAMEWON: 4,
+  GAMEOVER: 5
 };
 
 
@@ -340,7 +341,11 @@ function resetLevel() {
 
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    currentGameState = GameState.LEVELTRANSITION;
+    if(level == 10) {
+      currentGameState = GameState.GAMEWON;
+    } else {
+      currentGameState = GameState.LEVELTRANSITION;
+    }
 
     resetLevel();
   }
