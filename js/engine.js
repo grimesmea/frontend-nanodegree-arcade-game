@@ -191,33 +191,30 @@ var Engine = (function(global) {
   }
 
   function drawStartMenu() {
-    ctx.fillStyle = 'rgba(195, 35, 57, 0.95)';
+    ctx.fillStyle = 'rgba(0, 153, 76, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 48px Lucida Console';
+    ctx.font = 'bold 44px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
-    ctx.fillText('Megafun Castle Adventure:', canvas.width/2 , 150, canvas.width - 100);
+    ctx.fillText('Megafun Castle Adventure', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
     ctx.lineWidth = 3;
-    ctx.strokeText('Megafun Castle Adventure:', canvas.width/2 , 150, canvas.width - 100);
+    ctx.strokeText('Megafun Castle Adventure', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to begin your quest!', canvas.width/2 , 475, canvas.width - 100);
 
-    ctx.font = 'normal 20px Lucida Console';
-    ctx.fillText('A quest to help a young princess find her place in the world', canvas.width/2 , 200, canvas.width - 100);
-
-    ctx.font = 'normal 12px Lucida Console';
-    ctx.fillStyle = 'rgb(22, 22, 22)';
-    ctx.fillText('Despite the protests of her father, princess Celia wants', canvas.width/2 , 240, canvas.width - 100);
-    ctx.fillText('nothing more than to become a fletcher. Help her sneak back into', canvas.width/2 , 255, canvas.width - 100);
-    ctx.fillText('the castle after her secret fletching lessons.', canvas.width/2 , 270, canvas.width - 100);
+    ctx.font = 'normal 16px Lucida Console';
+    ctx.fillText('Despite the protests of her father, princess', canvas.width/2 , 240, canvas.width - 100);
+    ctx.fillText('Celia wants nothing more than to become a fletcher.', canvas.width/2 , 260, canvas.width - 100);
+    ctx.fillText('Embark on the quest of a lifetime to help her sneak back', canvas.width/2 , 300, canvas.width - 100);
+    ctx.fillText('into the castle after her secret fletching lessons.', canvas.width/2 , 320, canvas.width - 100);
   }
 
   function drawLevelTransitionScreen() {
-    ctx.fillStyle = 'rgba(94, 7, 245, 0.95)';
+    ctx.fillStyle = 'rgba(178, 102, 255, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
     ctx.font = 'bold 48px Lucida Console';
