@@ -345,6 +345,7 @@ function checkWinConditions() {
       currentGameState = GameState.GAMEWON;
     } else {
       currentGameState = GameState.LEVELTRANSITION;
+      level++;
     }
 
     resetLevel();
