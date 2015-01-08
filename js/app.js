@@ -36,10 +36,10 @@ var Enemy = function(x, y) {
   this.maxSpeed = 180 + (level * 10);
   this.minSpeed = 80 + (level * 10);
 
-  this.hitboxX = this.x;
-  this.hitboxY = this.y + 10;
-  this.hitboxWidth = 98;
-  this.hitboxHeight = 55;
+  this.hitboxX = this.x + 15;
+  this.hitboxY = this.y + 15;
+  this.hitboxWidth = 85;
+  this.hitboxHeight = 50;
 
   this.sprite = 'images/enemy-bug-cropped.png';
 
@@ -96,8 +96,8 @@ var Player = function(x, y) {
 
   this.hitboxX = x + 30;
   this.hitboxY = y + 75;
-  this.hitboxWidth = 15;
-  this.hitboxHeight = 10;
+  this.hitboxWidth = 20;
+  this.hitboxHeight = 20;
 
   this.sprite = 'images/char-princess-girl-cropped.png';
 
