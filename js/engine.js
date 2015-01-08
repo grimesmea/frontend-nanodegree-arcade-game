@@ -191,7 +191,7 @@ var Engine = (function(global) {
     ctx.fillStyle = 'rgba(195, 35, 57, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 40px Verdana';
+    ctx.font = 'bold 48px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
     ctx.fillText('Megafun Castle Adventure:', canvas.width/2 , 150, canvas.width - 100);
@@ -200,13 +200,13 @@ var Engine = (function(global) {
     ctx.lineWidth = 3;
     ctx.strokeText('Megafun Castle Adventure:', canvas.width/2 , 150, canvas.width - 100);
 
-    ctx.font = 'bold 32px Verdana';
-    ctx.fillText('Press "ENTER" to being your quest!', canvas.width/2 , 475, canvas.width - 100);
+    ctx.font = 'bold 32px Lucida Console';
+    ctx.fillText('Press "ENTER" to begin your quest!', canvas.width/2 , 475, canvas.width - 100);
 
-    ctx.font = 'normal 16px Verdana';
+    ctx.font = 'normal 20px Lucida Console';
     ctx.fillText('A quest to help a young princess find her place in the world', canvas.width/2 , 200, canvas.width - 100);
 
-    ctx.font = 'normal 12px Verdana';
+    ctx.font = 'normal 12px Lucida Console';
     ctx.fillStyle = 'rgb(22, 22, 22)';
     ctx.fillText('Despite the protests of her father, princess Celia wants', canvas.width/2 , 240, canvas.width - 100);
     ctx.fillText('nothing more than to become a fletcher. Help her sneak back into', canvas.width/2 , 255, canvas.width - 100);
@@ -217,7 +217,7 @@ var Engine = (function(global) {
     ctx.fillStyle = 'rgba(94, 7, 245, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 44px Verdana';
+    ctx.font = 'bold 44px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
     ctx.fillText('Level Up!', canvas.width/2 , 250, canvas.width - 100);
@@ -226,7 +226,7 @@ var Engine = (function(global) {
     ctx.lineWidth = 3;
     ctx.strokeText('Level Up!', canvas.width/2 , 250, canvas.width - 100);
 
-    ctx.font = 'bold 32px Verdana';
+    ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to continue on your quest!', canvas.width/2 , 400, canvas.width - 100);
   }
 
@@ -234,15 +234,15 @@ var Engine = (function(global) {
     ctx.fillStyle = 'rgba(66, 66, 66, 0.9)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 46px Verdana';
+    ctx.font = 'bold 46px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
     ctx.fillText('GAME OVER', canvas.width/2 , 150, canvas.width - 100);
 
-    ctx.font = 'normal 16px Verdana';
+    ctx.font = 'normal 16px Lucida Console';
     ctx.fillText('You were caught and have been grounded for a fortnight.', canvas.width/2 , 300, canvas.width - 100);
 
-    ctx.font = 'bold 32px Verdana';
+    ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to try again!', canvas.width/2 , 475, canvas.width - 100);
   }
 
@@ -281,7 +281,7 @@ var Engine = (function(global) {
 
   function drawPlayerScore() {
     ctx.fillStyle = 'rgba(66, 66, 66, 0.8)';
-    ctx.font = 'bold 20px Verdana';
+    ctx.font = 'bold 20px Lucida Console';
     ctx.textAlign = 'left';
     ctx.fillText('Score: ' + player.score, 5, 32);
   }
