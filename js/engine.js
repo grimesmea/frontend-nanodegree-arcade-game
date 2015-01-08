@@ -220,14 +220,14 @@ var Engine = (function(global) {
     ctx.fillStyle = 'rgba(94, 7, 245, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 44px Lucida Console';
+    ctx.font = 'bold 48px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
-    ctx.fillText('Level Up!', canvas.width/2 , 250, canvas.width - 100);
+    ctx.fillText('Level Up!', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
     ctx.lineWidth = 3;
-    ctx.strokeText('Level Up!', canvas.width/2 , 250, canvas.width - 100);
+    ctx.strokeText('Level Up!', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to continue on your quest!', canvas.width/2 , 400, canvas.width - 100);
@@ -237,14 +237,19 @@ var Engine = (function(global) {
     ctx.fillStyle = 'rgba(153, 204, 255, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height - 20);
 
-    ctx.font = 'bold 44px Lucida Console';
+    ctx.font = 'bold 48px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
-    ctx.fillText('You won!', canvas.width/2 , 250, canvas.width - 100);
+    ctx.fillText('You won!', canvas.width/2 , 175, canvas.width - 100);
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
     ctx.lineWidth = 3;
-    ctx.strokeText('You won!', canvas.width/2 , 250, canvas.width - 100);
+    ctx.strokeText('You won!', canvas.width/2 , 175, canvas.width - 100);
+
+    ctx.font = 'normal 12px Lucida Console';
+    ctx.fillStyle = 'rgb(22, 22, 22)';
+    ctx.fillText('You successfully help the princess complete', canvas.width/2 , 240, canvas.width - 100);
+    ctx.fillText('her apprenticeship. She can now follow her dreams!', canvas.width/2 , 255, canvas.width - 100);
 
     ctx.font = 'bold 24px Lucida Console';
     ctx.fillText('Press "ENTER" to restart the game!', canvas.width/2 , 400, canvas.width - 100);
