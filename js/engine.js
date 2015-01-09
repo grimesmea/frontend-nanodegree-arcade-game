@@ -138,7 +138,7 @@ var Engine = (function(global) {
     ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to begin your quest!', canvas.width/2 , 475, canvas.width - 100);
 
-    ctx.font = 'normal 16px Lucida Console';
+    ctx.font = 'normal 14px Lucida Console';
     ctx.fillText('Despite the protests of her father, princess', canvas.width/2 , 240, canvas.width - 100);
     ctx.fillText('Celia wants nothing more than to become a fletcher.', canvas.width/2 , 260, canvas.width - 100);
     ctx.fillText('Embark on the quest of a lifetime to help her sneak back', canvas.width/2 , 300, canvas.width - 100);
