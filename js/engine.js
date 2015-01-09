@@ -177,7 +177,7 @@ var Engine = (function(global) {
 
     ctx.font = 'normal 12px Lucida Console';
     ctx.fillStyle = 'rgb(22, 22, 22)';
-    ctx.fillText('You successfully help the princess complete', canvas.width/2 , 240, canvas.width - 100);
+    ctx.fillText('You successfully helped the princess complete', canvas.width/2 , 240, canvas.width - 100);
     ctx.fillText('her apprenticeship. Her parents, moved by her passion', canvas.width/2 , 255, canvas.width - 100);
     ctx.fillText('and new found skills in fletching, have come to accept and', canvas.width/2 , 270, canvas.width - 100);
     ctx.fillText('encourage princess Celia to open her own fletching business.', canvas.width/2 , 285, canvas.width - 100);
