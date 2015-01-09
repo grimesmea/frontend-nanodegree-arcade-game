@@ -303,10 +303,6 @@ function isColliding(collidable) {
   }
 }
 
-/* This function does nothing but it could have been a good place to
- * handle game reset states - maybe a new game menu or a game over screen
- * those sorts of things. It's only called once by the init() method.
- */
 function reset() {
   this.player = new Player(215, 430);
 
@@ -352,8 +348,6 @@ function checkWinConditions() {
   }
 }
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
     13: 'enter',
