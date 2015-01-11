@@ -205,7 +205,7 @@ var Engine = (function(global) {
     ctx.fillText('You were caught and have been grounded for a fortnight.', canvas.width/2 , 300, canvas.width - 100);
 
     ctx.font = 'bold 32px Lucida Console';
-    ctx.fillText('Press "ENTER" to try again!', canvas.width/2 , 475, canvas.width - 100);
+    ctx.fillText('Press "ENTER" play again!', canvas.width/2 , 475, canvas.width - 100);
   }
 
   function drawPlayerLife() {
