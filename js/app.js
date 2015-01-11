@@ -337,10 +337,12 @@ function resetLevel() {
 
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    /* Number of levels the player has to beat before has been lowered to ensure
-     * that Udacity reviews can see the win screen.
+    /* Number of levels the player has to beat before has been set to a low
+     * number to ensure that Udacity reviewers can easily the bea the game.
      */
-    if(level === 4 ) {
+     var finalLevel = 3;
+
+    if(level === finalLevel ) {
       currentGameState = GameState.GAMEWON;
     } else {
       currentGameState = GameState.LEVELTRANSITION;
