@@ -140,7 +140,11 @@ Player.prototype.handleInput = function(key) {
     }
 
   } else if (key === 'enter') {
-    currentGameState = GameState.LEVEL;
+    if(currentGameState !== GameState.GAMEWON) {
+      currentGameState = GameState.LEVEL;
+    } else {
+      reset();
+    }
   }
 };
 
