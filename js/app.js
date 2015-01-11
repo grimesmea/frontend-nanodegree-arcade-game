@@ -4,6 +4,10 @@ var currentGameState,
     gems = [],
     levelKeys = [];
 
+/**
+ * Enum for game states.
+ * @enum {number}
+ */
 var GameState = {
   STARTMENU: 1,
   LEVEL: 2,
@@ -12,13 +16,20 @@ var GameState = {
   GAMEOVER: 5
 };
 
-
+/**
+ * Enum for gem colors and values.
+ * @enum {number}
+ */
 var GemTypes = {
   GREEN: 100,
   BLUE: 250,
   ORANGE: 550,
 };
 
+/**
+ * Any object with a position and sprite.
+ * @constructor
+ */
 var Entity = function(x, y) {
   this.x = x;
   this.y = y;
@@ -31,6 +42,11 @@ Entity.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+/**
+ * Entity that moves and can kill the player.
+ * @constructor
+ * @extends {Entity}
+ */
 var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
@@ -87,6 +103,11 @@ Enemy.prototype.update = function(dt) {
   }
 };
 
+/**
+ * Entity controlled by user input.
+ * @constructor
+ * @extends {Entity}
+ */
 var Player = function(x, y) {
   Entity.call(this, x, y);
 
@@ -163,8 +184,8 @@ Player.prototype.checkCollisions = function() {
   }
 
   /* Future versions of the game may include more than one key per level, thus
-   * the for loop is left intact despite there only ever being one key per level in this
-   * verion.
+   * the for loop is left intact despite there only ever being one key per level
+   * in this verion.
    */
   for(var k = 0; k < levelKeys.length; k++){
     if(isColliding(levelKeys[k]) === true) {
@@ -173,6 +194,9 @@ Player.prototype.checkCollisions = function() {
   }
 };
 
+/* Resets the player's positione, hitbox and propterties when the level is reset
+ * or when the player collides with an enemy.
+ */
 Player.prototype.reset = function() {
   this.x = this.originalX;
   this.y = this.originalY;
@@ -195,6 +219,11 @@ Player.prototype.update = function(dt) {
   checkWinConditions();
 };
 
+/**
+ * Entity that is stationary and has value when retrieved by player.
+ * @constructor
+ * @extends {Entity}
+ */
 var Gem = function(x, y, gemType) {
   Entity.call(this, x, y);
 
@@ -224,6 +253,11 @@ Gem.prototype.onCollision = function() {
   gems.splice(gems.indexOf(this), 1);
 };
 
+/**
+ * Entity that is stationary and allows player to progress to next level.
+ * @constructor
+ * @extends {Entity}
+ */
 var LevelKey = function(x, y) {
   Entity.call(this, x, y);
 
@@ -247,6 +281,9 @@ function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
 
+/* Checks positions of existing gems to ensure they do not have the same
+ * coordinates.
+ */
 function generateGemCoords() {
    var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
    var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
@@ -263,6 +300,7 @@ function generateGemCoords() {
   return [x, y];
 }
 
+/* Checks positions of gems to ensure they do not have the same coordinates.*/
 function generateKeyCoords() {
   var x = Math.round(Math.random() * 10 / 2.5) * 100 + 35;
   var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
@@ -279,6 +317,10 @@ function generateKeyCoords() {
   return [x, y];
 }
 
+/**
+ * @param float dt Delta time since the game was last updateby which to multiply
+ * movements to allow for a consistent game play experience.
+ */
 function move(dt) {
   var newX = this.x + this.speedX * dt;
   var newY = this.y + this.speedY * dt;
@@ -307,6 +349,7 @@ function isColliding(collidable) {
   }
 }
 
+/* Sets game back to the start menu.*/
 function reset() {
   this.player = new Player(215, 430);
 
@@ -316,6 +359,8 @@ function reset() {
 
   this.currentGameState = GameState.STARTMENU;
 }
+
+/* Resets the level when the player wins or dies.*/
 
 function resetLevel() {
   player.reset();
@@ -339,6 +384,7 @@ function resetLevel() {
   levelKeys.push(new LevelKey(keyCoords[0], keyCoords[1]));
 }
 
+/* Check if the player has completed the level or the entire game.*/
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
     /* Number of levels the player has to beat before has been set to a low
