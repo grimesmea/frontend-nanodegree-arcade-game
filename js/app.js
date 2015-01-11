@@ -34,8 +34,8 @@ Entity.prototype.render = function() {
 var Enemy = function(x, y) {
   Entity.call(this, x, y);
 
-  this.maxSpeed = 180 + (level * 10);
-  this.minSpeed = 80 + (level * 10);
+  this.maxSpeed = 180 + (level * 30);
+  this.minSpeed = 80 + (level * 30);
 
   this.hitboxX = this.x + 15;
   this.hitboxY = this.y + 15;
@@ -325,10 +325,10 @@ function resetLevel() {
   gems = [];
   levelKeys =[];
 
-  enemies.push(new Enemy(-40, 299));
+  enemies.push(new Enemy(-150, 133));
   enemies.push(new Enemy(-40, 133));
   enemies.push(new Enemy(-180, 216));
-  enemies.push(new Enemy(-120, 133));
+  enemies.push(new Enemy(-40, 299));
 
   for(var gemType in GemTypes) {
     var gemCoords = generateGemCoords();
