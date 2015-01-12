@@ -1,8 +1,17 @@
-/**
- * Engine.js
+/* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
- * render methods on player and enemy objects (defined in app.js).
+ * render methods on your player and enemy objects (defined in your app.js).
+ *
+ * A game engine works by drawing the entire game screen over and over, kind of
+ * like a flipbook you may have created as a kid. When your player moves across
+ * the screen, it may look like just that image/character is moving or being
+ * drawn but that is not the case. What's really happening is the entire "scene"
+ * is being drawn over and over, presenting the illusion of animation.
+ *
+ * This engine is available globally via the Engine variable and it also makes
+ * the canvas' context (ctx) object globally available to make writing app.js
+ * a little simpler to work with.
  */
 
 var Engine = (function(global) {
@@ -17,8 +26,7 @@ var Engine = (function(global) {
   doc.body.appendChild(canvas);
 
   function main() {
-    /** Get time delta information to allow for smooth animation.
-     */
+
     var now = Date.now(),
     dt = (now - lastTime) / 1000.0;
 
@@ -51,20 +59,17 @@ var Engine = (function(global) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     var rowImages = [
-      'images/stone-block.png',
-      'images/stone-block.png',
-      'images/stone-block.png',
-      'images/stone-block.png',
-      'images/grass-block.png',
-      'images/grass-block.png'
+      'images/stone-block.png',   // Row 1 of 4 of stone
+      'images/stone-block.png',   // Row 2 of 4 of stone
+      'images/stone-block.png',   // Row 3 of 4 of stone
+      'images/stone-block.png',   // Row 4 of 4 of stone
+      'images/grass-block.png',   // Row 1 of 2 of grass
+      'images/grass-block.png'    // Row 2 of 2 of grass
     ],
     numRows = 6,
     numCols = 5,
     row, col;
 
-    /**
-     * Draws the map for the game row by row.
-     */
     for (row = 0; row < numRows; row++) {
       for (col = 0; col < numCols; col++) {
         ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
@@ -133,16 +138,11 @@ var Engine = (function(global) {
     ctx.font = 'bold 32px Lucida Console';
     ctx.fillText('Press "ENTER" to begin your quest!', canvas.width/2 , 475, canvas.width - 100);
 
-    ctx.font = 'normal 12px Lucida Console';
-    ctx.fillText('Despite the protests of your parents, the king and', canvas.width/2 , 220, canvas.width - 100);
-    ctx.fillText('queen, you want nothing more than to become a fletcher.', canvas.width/2 , 240, canvas.width - 100);
-    ctx.fillText('Having started a secret, night apprenticeship with the', canvas.width/2 , 260, canvas.width - 100);
-    ctx.fillText('royal fletcher you still have one problem holding you back —', canvas.width/2 , 280, canvas.width - 100);
-    ctx.fillText('sneaking back into your room before your parents notice!', canvas.width/2 , 300, canvas.width - 100);
-
-    ctx.font = 'bold 14px Lucida Console';
-    ctx.fillText('Objective: Sneak back into the castle after', canvas.width/2 , 340, canvas.width - 100);
-    ctx.fillText('your apprenticeship. Be sure to avoid the beetles!', canvas.width/2 , 360, canvas.width - 100);
+    ctx.font = 'normal 14px Lucida Console';
+    ctx.fillText('Despite the protests of her father, princess', canvas.width/2 , 240, canvas.width - 100);
+    ctx.fillText('Celia wants nothing more than to become a fletcher.', canvas.width/2 , 260, canvas.width - 100);
+    ctx.fillText('Embark on the quest of a lifetime to help her sneak back', canvas.width/2 , 300, canvas.width - 100);
+    ctx.fillText('into the castle after her secret fletching lessons.', canvas.width/2 , 320, canvas.width - 100);
   }
 
   function drawLevelTransitionScreen() {
@@ -152,14 +152,14 @@ var Engine = (function(global) {
     ctx.font = 'bold 48px Lucida Console';
     ctx.fillStyle = 'rgb(240, 240, 240)';
     ctx.textAlign = 'center';
-    ctx.fillText('Success!', canvas.width/2 , 150, canvas.width - 100);
+    ctx.fillText('Level Up!', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.strokeStyle = 'rgb(66, 66, 66)';
     ctx.lineWidth = 3;
-    ctx.strokeText('Success!', canvas.width/2 , 150, canvas.width - 100);
+    ctx.strokeText('Level Up!', canvas.width/2 , 150, canvas.width - 100);
 
     ctx.font = 'bold 32px Lucida Console';
-    ctx.fillText('Press "ENTER" to continue on your quest!', canvas.width/2 , 475, canvas.width - 100);
+    ctx.fillText('Press "ENTER" to continue on your quest!', canvas.width/2 , 400, canvas.width - 100);
   }
 
   function drawWinScreen() {
@@ -189,7 +189,7 @@ var Engine = (function(global) {
     ctx.fillText(player.score + ' gold pieces', canvas.width/2 , 345, canvas.width - 100);
 
     ctx.font = 'bold 24px Lucida Console';
-    ctx.fillText('Press "ENTER" to restart the game!', canvas.width/2 , 475, canvas.width - 100);
+    ctx.fillText('Press "ENTER" to restart the game!', canvas.width/2 , 445, canvas.width - 100);
   }
 
   function drawGameOverMenu() {
@@ -265,9 +265,6 @@ var Engine = (function(global) {
   ]);
   Resources.onReady(init);
 
-  /**
-   * Make the ctx and canvas variables avaiable globally.
-   */
   global.ctx = ctx;
   global.canvas = canvas;
 

@@ -183,10 +183,9 @@ Player.prototype.checkCollisions = function() {
     }
   }
 
-  /**
-   * Future versions of the game may include more than one key per level, thus
-   * the for loop is left intact despite there only ever being one key per level
-   * in this verion.
+  /* Future versions of the game may include more than one key per level, thus
+   * the for loop is left intact despite there only ever being one key per level in this
+   * verion.
    */
   for(var k = 0; k < levelKeys.length; k++){
     if(isColliding(levelKeys[k]) === true) {
@@ -195,10 +194,6 @@ Player.prototype.checkCollisions = function() {
   }
 };
 
-/**
- * Resets the player's positione, hitbox and propterties when the level is reset
- * or when the player collides with an enemy.
- */
 Player.prototype.reset = function() {
   this.x = this.originalX;
   this.y = this.originalY;
@@ -283,7 +278,8 @@ function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
 
-/* Checks positions of existing gems to ensure they do not have the same
+/**
+ * Checks positions of existing gems to ensure they do not have the same
  * coordinates.
  */
 function generateGemCoords() {
@@ -303,7 +299,8 @@ function generateGemCoords() {
 }
 
 /**
- * Checks positions of gems to ensure they do not have the same coordinates.
+ * Checks positions of gems to ensure they do not have the same
+ * coordinates.
  */
 function generateKeyCoords() {
   var x = Math.round(Math.random() * 10 / 2.5) * 100 + 35;
@@ -369,7 +366,6 @@ function reset() {
 /**
  * Resets the level when the player wins or dies.
  */
-
 function resetLevel() {
   player.reset();
   player.hasKey = false;
@@ -397,8 +393,7 @@ function resetLevel() {
  */
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    /**
-     * Number of levels the player has to beat before has been set to a low
+    /* Number of levels the player has to beat before has been set to a low
      * number to ensure that Udacity reviewers can easily the bea the game.
      */
      var finalLevel = 3;
