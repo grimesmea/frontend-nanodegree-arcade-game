@@ -87,17 +87,19 @@ var Engine = (function(global) {
 
     renderEntities();
 
-    if(currentGameState === GameState.STARTMENU) {
-      drawStartMenu();
-    }
-    if(currentGameState === GameState.LEVELTRANSITION) {
-      drawLevelTransitionScreen();
-    }
-    if(currentGameState === GameState.GAMEWON) {
-      drawWinScreen();
-    }
-    if(currentGameState === GameState.GAMEOVER) {
-      drawGameOverMenu();
+    switch (currentGameState) {
+      case GameState.STARTMENU:
+        drawStartMenu();
+        break;
+      case GameState.LEVELTRANSITION:
+        drawLevelTransitionScreen();
+        break;
+      case GameState.GAMEWON:
+        drawWinScreen();
+        break;
+      case GameState.GAMEOVER:
+        drawGameOverMenu();
+        break;
     }
   }
 
