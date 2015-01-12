@@ -1,7 +1,8 @@
-/* Engine.js
+/**
+ * Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
- * render methods on your player and enemy objects (defined in your app.js).
+ * render methods on player and enemy objects (defined in app.js).
  */
 
 var Engine = (function(global) {
@@ -16,8 +17,7 @@ var Engine = (function(global) {
   doc.body.appendChild(canvas);
 
   function main() {
-    /* Get time delta information to allow for smooth animation across
-     * computers.
+    /** Get time delta information to allow for smooth animation.
      */
     var now = Date.now(),
     dt = (now - lastTime) / 1000.0;
@@ -62,7 +62,8 @@ var Engine = (function(global) {
     numCols = 5,
     row, col;
 
-    /* Draws the map for the game row by row.
+    /**
+     * Draws the map for the game row by row.
      */
     for (row = 0; row < numRows; row++) {
       for (col = 0; col < numCols; col++) {
@@ -264,7 +265,8 @@ var Engine = (function(global) {
   ]);
   Resources.onReady(init);
 
-  /* Make the ctx and canvas variables avaiable globally.
+  /**
+   * Make the ctx and canvas variables avaiable globally.
    */
   global.ctx = ctx;
   global.canvas = canvas;

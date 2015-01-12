@@ -183,7 +183,8 @@ Player.prototype.checkCollisions = function() {
     }
   }
 
-  /* Future versions of the game may include more than one key per level, thus
+  /**
+   * Future versions of the game may include more than one key per level, thus
    * the for loop is left intact despite there only ever being one key per level
    * in this verion.
    */
@@ -194,7 +195,8 @@ Player.prototype.checkCollisions = function() {
   }
 };
 
-/* Resets the player's positione, hitbox and propterties when the level is reset
+/**
+ * Resets the player's positione, hitbox and propterties when the level is reset
  * or when the player collides with an enemy.
  */
 Player.prototype.reset = function() {
@@ -300,7 +302,9 @@ function generateGemCoords() {
   return [x, y];
 }
 
-/* Checks positions of gems to ensure they do not have the same coordinates.*/
+/**
+ * Checks positions of gems to ensure they do not have the same coordinates.
+ */
 function generateKeyCoords() {
   var x = Math.round(Math.random() * 10 / 2.5) * 100 + 35;
   var y = Math.round(Math.random() * 10 / 5) * 85 + 140;
@@ -349,7 +353,9 @@ function isColliding(collidable) {
   }
 }
 
-/* Sets game back to the start menu.*/
+/**
+ * Sets game back to the start menu.
+ */
 function reset() {
   this.player = new Player(215, 430);
 
@@ -360,7 +366,9 @@ function reset() {
   this.currentGameState = GameState.STARTMENU;
 }
 
-/* Resets the level when the player wins or dies.*/
+/**
+ * Resets the level when the player wins or dies.
+ */
 
 function resetLevel() {
   player.reset();
@@ -384,10 +392,13 @@ function resetLevel() {
   levelKeys.push(new LevelKey(keyCoords[0], keyCoords[1]));
 }
 
-/* Check if the player has completed the level or the entire game.*/
+/**
+ * Check if the player has completed the level or the entire game.
+ */
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    /* Number of levels the player has to beat before has been set to a low
+    /**
+     * Number of levels the player has to beat before has been set to a low
      * number to ensure that Udacity reviewers can easily the bea the game.
      */
      var finalLevel = 3;
