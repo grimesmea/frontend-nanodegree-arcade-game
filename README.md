@@ -6,7 +6,7 @@ frogger-inspired arcade clone created as part of Udacity's Front-End Web
 Developer Nanodegree.
 
 The game can be played online at http://grimesmea.github.io/frontend-nanodegree-arcade-game
-or source code can be found at https://github.com/grimesmea/frontend-nanodegree-arcade-game.
+and source code can be found at https://github.com/grimesmea/frontend-nanodegree-arcade-game.
 This code can be downloaded and the played by opening index.html in
 your web browser.
 
