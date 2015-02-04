@@ -5,7 +5,8 @@ var currentGameState,
     levelKeys = [];
 
 /**
- * Enum for game states.
+ * Enum that defines game states. Game state is set initially to STARTMENU in
+ * in the reset() method.
  * @enum {number}
  */
 var GameState = {
@@ -17,7 +18,8 @@ var GameState = {
 };
 
 /**
- * Enum for gem colors and values.
+ * Enum for gem colors and values that allows the creation of gems whose
+ * point value is associate with the gem's color and appropriate sprite.
  * @enum {number}
  */
 var GemTypes = {
@@ -28,6 +30,7 @@ var GemTypes = {
 
 /**
  * Any object with a position and sprite.
+ * @param {number} x, y Coordinates of the object's sprite sprite.
  * @constructor
  */
 var Entity = function(x, y) {
@@ -35,15 +38,22 @@ var Entity = function(x, y) {
   this.y = y;
 };
 
+/**
+ * This method by default does nothing, but classes that extend Entity may
+ * override this method.
+ * @param {number} Time delta
+ */
 Entity.prototype.update = function(dt) {
 };
 
+/** Draw the entity's sprite on the canvas */
 Entity.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 /**
  * Entity that moves and can kill the player.
+ * @param {number} x, y Coordinates of the sprite which are passed into Entity.
  * @constructor
  * @extends {Entity}
  */
@@ -67,6 +77,10 @@ var Enemy = function(x, y) {
 Enemy.prototype = Object.create(Entity.prototype);
 Enemy.prototype.constructor = Enemy;
 
+/**
+ * Sets the enemy's new position based on its speed. Checks if the new position
+ * remains on the canvas. If not, sets the x coordinate off-screen to the left.
+ */
 Enemy.prototype.move = function(dt) {
   var newX = this.x + this.speedX * dt;
   var newY = this.y + this.speedY * dt;
@@ -84,6 +98,11 @@ Enemy.prototype.move = function(dt) {
   }
 };
 
+/**
+ * Reduces the player's lives by one when the player collides with an enemy. If
+ * the player has 0 lives after subtracting one life, the currentGameState is
+ * set to game over, the level is reset, and the player is reset.
+ */
 Enemy.prototype.onCollision = function() {
   player.lives--;
 
@@ -95,6 +114,11 @@ Enemy.prototype.onCollision = function() {
   player.reset();
 };
 
+/**
+ * Updates the enemy's position and hitbox if playing a level.
+ * @param {number} Time delta
+ * @override
+ */
 Enemy.prototype.update = function(dt) {
   if(currentGameState === GameState.LEVEL) {
     this.move(dt);
@@ -105,6 +129,7 @@ Enemy.prototype.update = function(dt) {
 
 /**
  * Entity controlled by user input.
+ * @param {number} x, y Coordinates of the sprite which are passed into Entity.
  * @constructor
  * @extends {Entity}
  */
@@ -131,6 +156,7 @@ var Player = function(x, y) {
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 
+/** Handles key input to move the sprite on the screen if playing a level. */
 Player.prototype.handleInput = function(key) {
   if(currentGameState === GameState.LEVEL) {
     var tempX = this.x;
@@ -169,6 +195,9 @@ Player.prototype.handleInput = function(key) {
   }
 };
 
+/**
+ * Check to see if the player is colliding with another entity on the screen.
+ */
 Player.prototype.checkCollisions = function() {
   for(var i = 0; i < enemies.length; i++){
     if(isColliding(enemies[i]) === true) {
@@ -183,9 +212,10 @@ Player.prototype.checkCollisions = function() {
     }
   }
 
-  /* Future versions of the game may include more than one key per level, thus
-   * the for loop is left intact despite there only ever being one key per level in this
-   * verion.
+  /**
+   * Future versions of the game may include more than one key per level, thus
+   * the for loop is left intact despite there only being one key per level in
+   * this verion.
    */
   for(var k = 0; k < levelKeys.length; k++){
     if(isColliding(levelKeys[k]) === true) {
@@ -194,6 +224,11 @@ Player.prototype.checkCollisions = function() {
   }
 };
 
+/**
+ * Resets the player's position and hitbox. If the player has lost the game, the
+ * player's number of lives, score, and hasKey() boolean are reset to defaults
+ * as defined in this method. All of this together resets the player.
+ */
 Player.prototype.reset = function() {
   this.x = this.originalX;
   this.y = this.originalY;
@@ -208,6 +243,14 @@ Player.prototype.reset = function() {
   }
 };
 
+/**
+ * Updates the player's hitbox according to the player position. Checks for any
+ * collisions the player might have had with enemies, gems, and/or keys
+ * according to player's checkCollisions() method. Checks to see if the player
+ * had beat the level and/or the entire game.
+ * @param {number} Time delta
+ * @override
+ */
 Player.prototype.update = function(dt) {
   this.hitboxX = this.x + 30;
   this.hitboxY = this.y + 75;
@@ -218,6 +261,7 @@ Player.prototype.update = function(dt) {
 
 /**
  * Entity that is stationary and has value when retrieved by player.
+ * @param {number} x, y Coordinates of the sprite which are passed into Entity.
  * @constructor
  * @extends {Entity}
  */
@@ -245,13 +289,18 @@ var Gem = function(x, y, gemType) {
 Gem.prototype = Object.create(Entity.prototype);
 Gem.prototype.constructor = Gem;
 
+/**
+ * Deletes the gem when the player has collided with it and adds the gems value
+ * to player's score.
+ */
 Gem.prototype.onCollision = function() {
   player.score += this.type;
   gems.splice(gems.indexOf(this), 1);
 };
 
 /**
- * Entity that is stationary and allows player to progress to next level.
+ * Entity that is stationary and allows the player to progress to next level.
+ * @param {number} x, y Coordinates of the sprite which are passed into Entity.
  * @constructor
  * @extends {Entity}
  */
@@ -269,18 +318,32 @@ var LevelKey = function(x, y) {
 LevelKey.prototype = Object.create(Entity.prototype);
 LevelKey.prototype.constructor = LevelKey;
 
+/**
+ * Deletes the key when the player has collided with it and changes hasKey
+ * boolean to true, allowing the player to progress to the next level.
+ */
 LevelKey.prototype.onCollision = function() {
   player.hasKey = true;
   levelKeys.splice(levelKeys.indexOf(this), 1);
 };
 
+/**
+ * Generates random speeds for an enemy.
+ * @param {number} minSpeed Minimum speed at which the Entity will move in a
+ *     direction.
+ * @param {number} maxSpeed Maximum speed at which the Entity will move in a
+ *     direction.
+ * @returns {number} Randomly generated speed
+ */
 function getSpeed(minSpeed, maxSpeed) {
   return Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
 
 /**
- * Checks positions of existing gems to ensure they do not have the same
- * coordinates.
+ * Generates coordinates for a gem and checks positions of existing gems to
+ * ensure they do not have the same coordinates. If the gem's coordinates
+ * overlap with the position of an existing gem, new coordinates are generated
+ * and the coordinates are checked again.
  */
 function generateGemCoords() {
    var x = Math.round(Math.random() * 10 / 2.5) * 100 + 20;
@@ -299,8 +362,10 @@ function generateGemCoords() {
 }
 
 /**
- * Checks positions of gems to ensure they do not have the same
- * coordinates.
+ * Generates coordinates for a key and checks  the positions of gems to ensure
+ * the key does do occupy the same space as a gem. If the key's coordinates
+ * overlap with the position of a gem, new coordinates are generated and the
+ * position is checked again.
  */
 function generateKeyCoords() {
   var x = Math.round(Math.random() * 10 / 2.5) * 100 + 35;
@@ -318,10 +383,7 @@ function generateKeyCoords() {
   return [x, y];
 }
 
-/**
- * @param float dt Delta time since the game was last updateby which to multiply
- * movements to allow for a consistent game play experience.
- */
+/** @param {number} dt Delta time */
 function move(dt) {
   var newX = this.x + this.speedX * dt;
   var newY = this.y + this.speedY * dt;
@@ -339,6 +401,11 @@ function move(dt) {
   }
 }
 
+/**
+ * Checks to see if the player's hitbox overlaps with the hitbox of a
+ * collidable.
+ * @param {Object} collidable Entity that another Entity can collide with.
+ */
 function isColliding(collidable) {
   if(player.hitboxX > collidable.hitboxX + collidable.hitboxWidth||
      collidable.hitboxX > player.hitboxX + player.hitboxWidth ||
@@ -351,7 +418,8 @@ function isColliding(collidable) {
 }
 
 /**
- * Sets game back to the start menu.
+ * Creates a new player object, sets the currentGameState to the start menu,
+ * resets the level, and sets level to 1. All of this together resets the game.
  */
 function reset() {
   this.player = new Player(215, 430);
@@ -364,7 +432,9 @@ function reset() {
 }
 
 /**
- * Resets the level when the player wins or dies.
+ * Resets the player position, the player's hasKey boolean to false, enemies,
+ * gems, and key. Function is called when the player wins or dies.All of this
+ * together resets the game.
  */
 function resetLevel() {
   player.reset();
@@ -389,12 +459,14 @@ function resetLevel() {
 }
 
 /**
- * Check if the player has completed the level or the entire game.
+ * Check if the player has completed the level or beat the entire game. Sets the
+ * currentGameState accordingly and resets the level.
  */
 function checkWinConditions() {
   if(player.hasKey && player.y < 40) {
-    /* Number of levels the player has to beat before has been set to a low
-     * number to ensure that Udacity reviewers can easily the bea the game.
+    /**
+     * Number of levels the player has to beat  has been set to a low number to
+     * ensure that Udacity reviewers can quickly the beat the game.
      */
      var finalLevel = 3;
 
@@ -409,6 +481,10 @@ function checkWinConditions() {
   }
 }
 
+/**
+ * Listens for key presses and passes keys pressed to the player.handleInput()
+ * method if player has been defined.
+ */
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
     13: 'enter',
