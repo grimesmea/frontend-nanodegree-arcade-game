@@ -7,7 +7,7 @@ Developer Nanodegree.
 
 The game can be played online at http://grimesmea.github.io/frontend-nanodegree-arcade-game
 and source code can be found at https://github.com/grimesmea/frontend-nanodegree-arcade-game.
-This code can be downloaded and the played by opening index.html in
+This code can be downloaded and then played by opening index.html in
 your web browser.
 
 The Story
@@ -46,14 +46,14 @@ and impassable until after you have you retrieved the key.
 
 Resources
 ---------
-https://developer.mozilla.org/en-US/docs/Web/JavaScript
-http://diveintohtml5.info/canvas.html#text
-http://stackoverflow.com/questions/9765659/declaring-variables-in-javascript-class-this-vs-var-difference
-http://jlongster.com/Making-Sprite-based-Games-with-Canvas
-https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-http://www.gamefromscratch.com/post/2012/11/26/GameDev-math-recipes-Collision-detection-using-an-axis-aligned-bounding-box.aspx
-http://stravid.com/en/cleaner-javascript-code-with-enums/
-http://ryanmorr.com/understanding-scope-and-context-in-javascript/
-http://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing
-https://stijndewitt.wordpress.com/2014/01/26/enums-in-javascript/
-http://designpepper.com/blog/drips/the-difference-between-boolean-objects-and-boolean-primitives-in-javascript.html
+https://developer.mozilla.org/en-US/docs/Web/JavaScript  
+http://diveintohtml5.info/canvas.html#text  
+http://stackoverflow.com/questions/9765659/declaring-variables-in-javascript-class-this-vs-var-difference  
+http://jlongster.com/Making-Sprite-based-Games-with-Canvas  
+https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection  
+http://www.gamefromscratch.com/post/2012/11/26/GameDev-math-recipes-Collision-detection-using-an-axis-aligned-bounding-box.aspx  
+http://stravid.com/en/cleaner-javascript-code-with-enums/  
+http://ryanmorr.com/understanding-scope-and-context-in-javascript/  
+http://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing  
+https://stijndewitt.wordpress.com/2014/01/26/enums-in-javascript/  
+http://designpepper.com/blog/drips/the-difference-between-boolean-objects-and-boolean-primitives-in-javascript.html  
